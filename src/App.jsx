@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, Suspense, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, Environment, Html, Preload, OrbitControls } from '@react-three/drei';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { motion, AnimatePresence, useInView, animate } from 'framer-motion';
 
 // Import the external CSS file
 import './index.css';
@@ -40,48 +40,11 @@ const testimonials = [
     { id: 3, author: "Rohan K.", role: "Local Business Owner – India", text: "I run a small business and needed a proper online presence. Deepak explained everything in simple terms, no jargon. The site turned out clean, fast, and mobile-friendly — my customers love it. For someone like me who’s not tech-savvy, he made the process stress-free." },
     { id: 4, author: "Sophie M.", role: "International Client – Europe", text: "Working with Deepak was refreshing. He brought in ideas I hadn’t even considered, especially with interactive elements that made my portfolio stand out. Communication was smooth despite the time difference, and he was proactive in suggesting improvements. Felt more like a creative partner than just a developer." }
 ];
-
-// UPDATED projectsData ARRAY
 const projectsData = [
-    { 
-      id: 1, 
-      title: "Arabian Red Fox", 
-      category: "Development",
-      description: "A sleek, responsive website dedicated to the Arabian Red Fox, featuring elegant design, smooth animations, and conservation information.", 
-      tech: ["HTML", "CSS", "JavaScript"], 
-      image: "img/proj2.webp", // Using your new screenshot
-      link: "https://redfo.netlify.app", // Your live project URL
-      alt: "A website about the Arabian Red Fox" 
-    },
-    { 
-      id: 2, 
-      title: "Personal Portfolio", 
-      category: "Design", 
-      description: "An interactive personal portfolio built with React and Three.js, featuring a 3D hero model, scroll animations, and a dynamic theme.", 
-      tech: ["React", "Three.js", "Framer Motion", "Tailwind CSS"], 
-      image: "img/proj1.webp", // New local image path
-      link: "#home", // Link to your GitHub repo
-      alt: "This portfolio website"     },
-    /*{ 
-      id: 3, 
-      title: "Brand Identity System", 
-      category: "Design", 
-      description: "A comprehensive brand transformation for a tech startup, including logo, color systems, and a responsive website.", 
-      tech: ["Figma", "Design Systems", "Branding"], 
-      image: "/project-three.jpg", 
-      link: "#", 
-      alt: "Stationery showing a modern brand identity design" 
-    },
-    { 
-      id: 4, 
-      title: "Data Visualization Dashboard", 
-      category: "Development", 
-      description: "Real-time data dashboard with custom D3.js visualizations and WebGL-accelerated particle systems.", 
-      tech: ["D3.js", "WebGL", "Node.js", "Socket.io"], 
-      image: "/project-four.jpg", 
-      link: "#", 
-      alt: "Laptop screen showing an interactive data dashboard" 
-    }*/
+    { id: 1, title: "Arabian Red Fox", category: "Development", description: "A sleek, responsive website dedicated to the Arabian Red Fox, featuring elegant design, smooth animations, and conservation information.", tech: ["HTML", "CSS", "JavaScript"], image: "img/proj2.webp", link: "https://redfo.netlify.app", alt: "A website about the Arabian Red Fox" },
+    { id: 2, title: "Personal Portfolio", category: "Development", description: "An interactive personal portfolio built with React and Three.js, featuring a 3D hero model, scroll animations, and a dynamic theme.", tech: ["React", "Three.js", "Framer Motion", "Tailwind CSS"], image: "img/proj1.webp", link: "https://www.deepakksingh.com/", alt: "This portfolio website" },
+    /*{ id: 3, title: "Brand Identity System", category: "Design", description: "A comprehensive brand transformation for a tech startup, including logo, color systems, and a responsive website.", tech: ["Figma", "Design Systems", "Branding"], image: "/project-three.jpg", link: "#", alt: "Stationery showing a modern brand identity design" },
+    { id: 4, title: "Data Visualization Dashboard", category: "Development", description: "Real-time data dashboard with custom D3.js visualizations and WebGL-accelerated particle systems.", tech: ["D3.js", "WebGL", "Node.js", "Socket.io"], image: "/project-four.jpg", link: "#", alt: "Laptop screen showing an interactive data dashboard" }*/
 ];
 
 // ============================================================================
@@ -153,7 +116,7 @@ function VrThinkerModel() {
         if (modelRef.current) {
             const breathe = Math.sin(Date.now() * 0.0008) * 0.005 + 1;
             const floatY = Math.sin(Date.now() * 0.0005) * 0.05;
-            const scale = isMobile ? 0.1 : 0.125; 
+            const scale = isMobile ? 0.0 : 0.125; 
             const positionX = isMobile ? 0 : 3.15;
             const positionY = isMobile ? floatY - 2.5 : floatY - 3.25; 
             modelRef.current.scale.set(scale * breathe, scale * breathe, scale * breathe);
@@ -241,7 +204,7 @@ const HeroSection = ({ theme }) => (
     <section id="home" className="hero-section">
         <div className="hero-canvas-container">
             <Canvas camera={{ fov: 45 }} gl={{ antialias: true, alpha: true }} dpr={[1, 1.5]}>
-                <Suspense fallback={<Html center><div className="canvas-loader">please wait </div></Html>}>
+                <Suspense fallback={<Html center><div className="canvas-loader">Loading...</div></Html>}>
                     <HeroSceneContent theme={theme} />
                     <Preload all />
                 </Suspense>
@@ -310,22 +273,52 @@ const AboutSection = () => {
     );
 };
 
+// UPDATED RadialSkillChart COMPONENT
 const RadialSkillChart = ({ skill }) => {
     const ref = useRef(null);
+    const circleRef = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.5 });
+    const [animatedLevel, setAnimatedLevel] = useState(0);
+
     const radius = 45, strokeWidth = 8;
     const normalizedRadius = radius - strokeWidth / 2;
     const circumference = normalizedRadius * 2 * Math.PI;
-    const strokeDashoffset = circumference - (skill.level / 100) * circumference;
+
+    useEffect(() => {
+        if (isInView) {
+            animate(0, skill.level, {
+                duration: 1.5,
+                ease: "easeOut",
+                onUpdate: (latest) => {
+                    // Update the number in the center
+                    setAnimatedLevel(Math.round(latest));
+
+                    // Update the SVG circle progress
+                    if (circleRef.current) {
+                        circleRef.current.style.strokeDashoffset = circumference - (latest / 100) * circumference;
+                    }
+                }
+            });
+        }
+    }, [isInView, skill.level, circumference]);
 
     return (
         <div className="skill-chart-item" ref={ref}>
             <div className="skill-chart-visual">
                 <svg height={radius * 2} width={radius * 2} className="skill-chart-svg">
                     <circle className="skill-chart-bg" strokeWidth={strokeWidth} r={normalizedRadius} cx={radius} cy={radius} />
-                    <motion.circle className="skill-chart-fg" strokeWidth={strokeWidth} strokeDasharray={`${circumference} ${circumference}`} style={{ strokeDashoffset }} r={normalizedRadius} cx={radius} cy={radius} initial={{ strokeDashoffset: circumference }} animate={{ strokeDashoffset: isInView ? strokeDashoffset : circumference }} transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}/>
+                    <circle
+                        ref={circleRef}
+                        className="skill-chart-fg"
+                        strokeWidth={strokeWidth}
+                        strokeDasharray={`${circumference} ${circumference}`}
+                        style={{ strokeDashoffset: circumference }}
+                        r={normalizedRadius}
+                        cx={radius}
+                        cy={radius}
+                    />
                 </svg>
-                <div className="skill-chart-percent">{skill.level}%</div>
+                <div className="skill-chart-percent">{animatedLevel}%</div>
             </div>
             <div className="skill-chart-info"><h4>{skill.name}</h4></div>
         </div>
@@ -355,7 +348,7 @@ const SkillsSection = () => (
 
 const ProjectsSection = () => {
     const [activeFilter, setActiveFilter] = useState('All');
-    const filters = ['All', 'Development','Design',/* 'Experimental'*/];
+    const filters = ['All', 'Development', 'Design', 'Experimental'];
     const filteredProjects = activeFilter === 'All' ? projectsData : projectsData.filter(project => project.category === activeFilter);
 
     return (
@@ -429,6 +422,7 @@ const ContactSection = () => (
         <div className="section-container contact-container">
             <h2 className="section-title">Let’s Create Something Amazing</h2>
             <p className="section-subtitle">Ready to bring your ideas to life? Let's discuss your next project.</p>
+            <br />
             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=xinghdeepak209@gmail.com&su=Inquiry%20from%20your%20Portfolio" className="contact-button" target="_blank" rel="noopener noreferrer">Get In Touch</a>
         </div>
     </motion.section>
@@ -444,7 +438,7 @@ const Footer = ({ navLinks }) => (
             <a href="https://www.linkedin.com/in/singh-deepak-wd" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">LinkedIn</a><span>/</span>
             <a href="https://x.com/Deepak__Singh4" target="_blank" rel="noopener noreferrer" aria-label="X Profile">X</a><span>/</span>
             <a href="https://dribbble.com/singh-deepak" target="_blank" rel="noopener noreferrer" aria-label="Dribbble Profile">Dribbble</a><span>/</span>
-            <a href="https://wa.me/917202809157" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WhatsApp</a>
+            <a href="https://wa.me/7202809157" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WhatsApp</a>
         </div>
         <p className="footer-credit">© {new Date().getFullYear()} Deepak Singh. All Rights Reserved.</p>
     </footer>
