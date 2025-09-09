@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef, Suspense, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, Environment, Html, Preload, OrbitControls } from '@react-three/drei';
 import { motion, AnimatePresence, useInView, animate } from 'framer-motion';
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 // Import the external CSS file
 import './index.css';
