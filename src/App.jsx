@@ -424,6 +424,7 @@ const ContactSection = () => (
         <div className="section-container contact-container">
             <h2 className="section-title">Let’s Create Something Amazing</h2>
             <p className="section-subtitle">Ready to bring your ideas to life? Let's discuss your next project.</p>
+            <br/>
             <a 
               href="https://cal.com/singh-deepak-lrx6mm" 
               className="contact-button"
