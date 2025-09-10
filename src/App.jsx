@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, Suspense, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, Environment, Html, Preload, OrbitControls } from '@react-three/drei';
 import { motion, AnimatePresence, useInView, animate } from 'framer-motion';
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react"
 
 // Import the external CSS file
@@ -499,6 +499,7 @@ const App = () => {
 
     return (
         <div className={`app ${isLoaded ? 'loaded' : ''}`}>
+            <Analytics />
             <div id="stars1"></div>
             <div id="stars2"></div>
             <button className="mobile-theme-toggle-header" onClick={toggleTheme} aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}>{theme === 'light' ? '🌙' : '☀️'}</button>
@@ -516,5 +517,4 @@ const App = () => {
         </div>
     );
 }
-
 export default App;
