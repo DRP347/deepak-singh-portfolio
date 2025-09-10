@@ -424,12 +424,17 @@ const ContactSection = () => (
         <div className="section-container contact-container">
             <h2 className="section-title">Let’s Create Something Amazing</h2>
             <p className="section-subtitle">Ready to bring your ideas to life? Let's discuss your next project.</p>
-            <br />
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=xinghdeepak209@gmail.com&su=Inquiry%20from%20your%20Portfolio" className="contact-button" target="_blank" rel="noopener noreferrer">Get In Touch</a>
+            <a 
+              href="https://cal.com/singh-deepak-lrx6mm" 
+              className="contact-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book a Call
+            </a>
         </div>
     </motion.section>
 );
-
 const Footer = ({ navLinks }) => (
     <footer className="footer">
         <nav className="footer-links" aria-label="Footer navigation">
@@ -438,7 +443,7 @@ const Footer = ({ navLinks }) => (
         <div className="footer-socials">
             <a href="https://github.com/DRP347" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">GitHub</a><span>/</span>
             <a href="https://www.linkedin.com/in/singh-deepak-wd" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">LinkedIn</a><span>/</span>
-            <a href="https://x.com/Deepak__Singh4" target="_blank" rel="noopener noreferrer" aria-label="X Profile">X</a><span>/</span>
+            <a href="https://x.com/DRajput37654" target="_blank" rel="noopener noreferrer" aria-label="X Profile">X</a><span>/</span>
             <a href="https://dribbble.com/singh-deepak" target="_blank" rel="noopener noreferrer" aria-label="Dribbble Profile">Dribbble</a><span>/</span>
             <a href="https://wa.me/7202809157" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WhatsApp</a>
         </div>
