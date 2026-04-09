@@ -1,0 +1,532 @@
+/* =====================================================================
+   ARABIAN RED FOX — COMPLETE CSS
+===================================================================== */
+
+.arf-page {
+  min-height: 100vh;
+  background: #060606;
+  color: #fff;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* ════════════════════════════════════════════
+   HERO
+════════════════════════════════════════════ */
+.arf-hero {
+  position: relative; width: 100%; height: 100vh;
+  min-height: 720px; overflow: hidden;
+  display: flex; align-items: flex-end;
+  background: #060606;
+}
+
+.arf-heroBg { position: absolute; inset: 0; z-index: 0; }
+
+.arf-bgBase {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 120% 100% at 62% 50%,
+    #1c0e07 0%, #100906 28%, #060606 55%, #040404 100%);
+}
+.arf-bgAmber {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 58% 78% at 68% 52%,
+    rgba(185,78,16,0.30) 0%, rgba(145,52,9,0.17) 30%,
+    rgba(105,32,5,0.09) 55%, transparent 72%);
+  filter: blur(10px);
+}
+.arf-bgLeftShadow {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right,
+    rgba(4,4,4,0.94) 0%, rgba(4,4,4,0.72) 22%,
+    rgba(4,4,4,0.32) 42%, transparent 58%);
+}
+/* Grain texture */
+.arf-bgNoise {
+  position: absolute; inset: 0; opacity: 0.042;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  background-size: 180px; mix-blend-mode: soft-light; pointer-events: none;
+}
+/* Smoke / vapor layer — dark velvet atmosphere */
+.arf-bgSmoke {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 55% 70%, rgba(40,15,5,0.45) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 50% at 72% 25%, rgba(20,8,3,0.30) 0%, transparent 55%);
+  pointer-events: none; mix-blend-mode: multiply;
+}
+/* Subtle warm radial light emanating from bottle */
+.arf-bgRadialLight {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 30% 55% at 65% 46%,
+    rgba(200,90,20,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Back link */
+.arf-anchor {
+  position: absolute; top: 32px; left: 44px; z-index: 20;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  text-decoration: none; color: rgba(255,255,255,0.28);
+  transition: color 220ms ease;
+}
+.arf-anchor:hover { color: rgba(255,255,255,0.72); }
+.arf-anchorIcon { font-size: 13px; line-height: 1; }
+
+/* Watermark */
+.arf-watermark {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  pointer-events: none; z-index: 1; overflow: hidden; gap: 0;
+}
+.arf-wm1, .arf-wm2 {
+  display: block;
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-weight: 900; font-size: clamp(60px, 13vw, 230px);
+  letter-spacing: -0.02em; line-height: 0.88;
+  user-select: none; color: transparent; white-space: nowrap;
+  mix-blend-mode: overlay;
+}
+.arf-wm1 { -webkit-text-stroke: 1px rgba(255,255,255,0.07); transform: translateX(-1.5%); }
+.arf-wm2 { -webkit-text-stroke: 1px rgba(210,70,15,0.10);   transform: translateX(1.5%);  }
+
+/* Vignette */
+.arf-vignette {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: radial-gradient(ellipse 105% 95% at 50% 46%,
+    transparent 10%, rgba(0,0,0,0.28) 68%, rgba(0,0,0,0.52) 100%);
+}
+
+/* Bottle */
+.arf-heroBottleWrap {
+  position: absolute; right: -8.75vw; top: -18%; bottom: -22%;
+  width: clamp(420px, 52vw, 820px);
+  z-index: 3; pointer-events: none; will-change: transform, opacity;
+  display: flex; align-items: center; justify-content: center;
+}
+.arf-bottleGlowOuter {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-46%, -48%); width: 130%; height: 70%;
+  background: radial-gradient(ellipse at 50% 52%,
+    rgba(185,85,18,0.24) 0%, rgba(145,58,12,0.11) 45%, transparent 68%);
+  filter: blur(52px); z-index: 0;
+}
+.arf-bottleGlowInner {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-46%, -50%); width: 60%; height: 50%;
+  background: radial-gradient(ellipse at 48% 52%,
+    rgba(225,115,22,0.20) 0%, rgba(185,78,14,0.09) 50%, transparent 70%);
+  filter: blur(30px); z-index: 0;
+}
+.arf-bottleImg {
+  position: relative; z-index: 1;
+  width: auto; height: 80%; max-width: none;
+  object-fit: contain; object-position: center; display: block;
+  mix-blend-mode: lighten;
+  filter:
+    drop-shadow(-18px 40px 60px rgba(0,0,0,0.98))
+    drop-shadow(0px 0px 120px rgba(160,60,10,0.24))
+    brightness(1.08) contrast(1.10) saturate(1.12);
+  user-select: none; -webkit-user-drag: none;
+}
+.arf-bottleFloor {
+  position: absolute; bottom: 15%; left: 50%;
+  transform: translateX(-46%); width: 50%; height: 30px;
+  background: radial-gradient(ellipse, rgba(185,85,18,0.32) 0%, transparent 70%);
+  filter: blur(16px); border-radius: 50%; z-index: 0;
+}
+
+/* Fades */
+.arf-heroFadeBottom {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 38%; z-index: 5; pointer-events: none;
+  background: linear-gradient(to top, #060606 0%, #060606 12%, rgba(6,6,6,0.85) 35%, rgba(6,6,6,0.40) 60%, transparent 100%);
+}
+.arf-heroFadeTop {
+  position: absolute; top: 0; left: 0; right: 0; height: 20%; z-index: 5; pointer-events: none;
+  background: linear-gradient(to bottom, #060606 0%, rgba(6,6,6,0.65) 45%, transparent 100%);
+}
+.arf-heroFadeLeft {
+  position: absolute; top: 0; left: 0; bottom: 0; width: 46%; z-index: 5; pointer-events: none;
+  background: linear-gradient(to right, rgba(4,4,4,0.55) 0%, rgba(4,4,4,0.22) 65%, transparent 100%);
+}
+
+/* Copy */
+.arf-heroContent {
+  position: relative; z-index: 10;
+  padding: 0 0 66px 60px; max-width: 440px;
+}
+.arf-heroBadge {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-size: 10px; font-weight: 800; letter-spacing: 0.32em;
+  text-transform: uppercase; color: rgba(255,255,255,0.30); margin-bottom: 18px;
+}
+.arf-heroBadgeDot {
+  width: 6px; height: 6px; border-radius: 50%; background: #dc2626;
+  box-shadow: 0 0 10px rgba(220,38,38,0.9), 0 0 22px rgba(220,38,38,0.4);
+  flex-shrink: 0; animation: arfPulse 2.6s ease-in-out infinite;
+}
+@keyframes arfPulse {
+  0%,100% { box-shadow: 0 0 8px rgba(220,38,38,0.85), 0 0 18px rgba(220,38,38,0.35); }
+  50%      { box-shadow: 0 0 18px rgba(220,38,38,1.0), 0 0 36px rgba(220,38,38,0.55); }
+}
+
+/* Title — "Red Fox" bigger for rhythm */
+.arf-heroTitle {
+  font-family: "Playfair Display", "Times New Roman", serif;
+  line-height: 0.90; letter-spacing: -0.04em;
+  margin: 0 0 22px; color: #fff;
+  display: flex; flex-direction: column;
+}
+.arf-heroTitle > :first-child { font-size: clamp(52px, 5.6vw, 86px); }
+.arf-heroTitleAccent {
+  font-style: italic;
+  font-size: clamp(62px, 7.0vw, 108px); /* bigger for rhythm */
+  color: rgba(255,255,255,0.44);
+}
+
+.arf-heroSubtitle {
+  font-size: 15px; line-height: 1.82;
+  color: rgba(255,255,255,0.36); margin: 0 0 32px; max-width: 340px;
+}
+.arf-heroActions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.arf-heroCta {
+  display: inline-flex; align-items: center; gap: 9px;
+  height: 46px; padding: 0 26px; border-radius: 999px;
+  text-decoration: none; font-size: 13px; font-weight: 700; color: #fff;
+  background: linear-gradient(135deg, #991b1b 0%, #dc2626 100%);
+  box-shadow: 0 0 0 1px rgba(220,38,38,0.35), 0 14px 36px rgba(220,38,38,0.26);
+  transition: transform 220ms ease, box-shadow 220ms ease; letter-spacing: 0.015em;
+}
+.arf-heroCta:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 0 1px rgba(220,38,38,0.55), 0 20px 48px rgba(220,38,38,0.42);
+}
+.arf-heroCtaArrow { display: inline-block; transition: transform 220ms ease; }
+.arf-heroCta:hover .arf-heroCtaArrow { transform: translate(3px,-3px); }
+.arf-heroScroll {
+  font-size: 11px; letter-spacing: 0.20em; text-transform: uppercase;
+  color: rgba(255,255,255,0.18); text-decoration: none; transition: color 220ms ease;
+}
+.arf-heroScroll:hover { color: rgba(255,255,255,0.48); }
+
+/* Meta card */
+.arf-heroDarkCard {
+  position: absolute; bottom: 52px; right: 52px; z-index: 10;
+  display: flex; align-items: center; gap: 24px; padding: 14px 24px;
+  border-radius: 14px; background: rgba(255,255,255,0.028);
+  border: 1px solid rgba(255,255,255,0.065);
+  backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px);
+  box-shadow: 0 22px 64px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.arf-darkCardItem { text-align: left; }
+.arf-darkCardLabel { font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.26); margin-bottom: 5px; }
+.arf-darkCardValue { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.72); }
+.arf-darkCardDivider { width: 1px; height: 28px; background: rgba(255,255,255,0.065); flex-shrink: 0; }
+
+/* ════════════════════════════════════
+   SECTION 01 — THE CHALLENGE
+════════════════════════════════════ */
+.arf-s1 {
+  position: relative; background: #ffffff; color: #0b1220;
+  padding: 120px 0 140px; isolation: isolate;
+}
+.arf-s1Wrap { width: min(1200px, calc(100% - 80px)); margin: 0 auto; }
+.arf-s1Grid { display: grid; grid-template-columns: 0.85fr 1.45fr; gap: 72px; align-items: start; }
+
+/* Left sticky */
+.arf-s1Left { position: relative; }
+.arf-s1Sticky { position: sticky; top: 120px; }
+.arf-s1Num {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(100px, 10vw, 172px);
+  line-height: 0.85; letter-spacing: -0.06em;
+  /* stronger opacity — design element not ghost */
+  color: rgba(15,20,35,0.14);
+  user-select: none; margin-left: -8px;
+}
+.arf-s1Line { width: 32px; height: 2px; background: rgba(114,47,55,0.65); border-radius: 999px; margin: 14px 0 12px; }
+.arf-s1Label { font-size: 11px; font-weight: 800; letter-spacing: 0.30em; text-transform: uppercase; color: rgba(114,47,55,0.90); }
+.arf-s1Desc { margin: 12px 0 0; font-size: 13px; line-height: 1.75; color: rgba(15,20,35,0.40); max-width: 190px; }
+
+/* Right story */
+.arf-s1Right { display: grid; gap: 36px; padding-top: 10px; }
+
+/* Quote */
+.arf-s1Quote { position: relative; padding-top: 6px; }
+.arf-s1QuoteMark {
+  position: absolute; top: -36px; left: -12px;
+  width: 60px; height: 60px; pointer-events: none;
+}
+.arf-s1QuoteMark::before {
+  content: "\201C";
+  position: absolute; top: 0; left: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 120px; font-style: italic; font-weight: 900;
+  line-height: 1; color: rgba(114,47,55,0.10); user-select: none;
+}
+.arf-s1Title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(30px, 3.0vw, 48px);
+  line-height: 1.08; letter-spacing: -0.025em;
+  color: #0b1220; margin: 0 0 18px;
+}
+.arf-s1TitleMuted { color: rgba(11,18,32,0.38); font-style: italic; }
+.arf-s1Body { font-size: 17px; line-height: 1.82; color: rgba(15,20,35,0.58); margin: 0; max-width: 620px; }
+
+/* Divider */
+.arf-s1Divider { display: flex; align-items: center; gap: 14px; }
+.arf-s1DivLine { flex: 1; height: 1px; background: rgba(15,20,35,0.08); }
+.arf-s1DivLabel { font-size: 10px; font-weight: 800; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(15,20,35,0.25); white-space: nowrap; flex-shrink: 0; }
+
+/* Cards */
+.arf-s1Cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.arf-s1Card {
+  background: #fff; border-radius: 18px; overflow: hidden;
+  border: 1px solid rgba(15,20,35,0.07);
+  box-shadow: 0 2px 4px rgba(15,20,35,0.04), 0 12px 32px rgba(15,20,35,0.06);
+  transition: box-shadow 280ms ease, transform 280ms ease; cursor: default;
+}
+.arf-s1Card:hover {
+  box-shadow: 0 4px 8px rgba(15,20,35,0.07), 0 20px 52px rgba(15,20,35,0.12);
+}
+.arf-s1CardBar { height: 3px; width: 100%; }
+.arf-s1CardBarRed  { background: linear-gradient(to right, #991b1b, #dc2626); }
+.arf-s1CardBarGold { background: linear-gradient(to right, #92400e, #d97706); }
+.arf-s1CardBody { padding: 22px 22px 20px; }
+.arf-s1CardIcon { font-size: 18px; margin-bottom: 12px; color: rgba(15,20,35,0.20); line-height: 1; }
+.arf-s1CardTitle { margin: 0 0 9px; font-size: 10.5px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(15,20,35,0.80); }
+.arf-s1CardText { margin: 0 0 18px; font-size: 14px; line-height: 1.80; color: rgba(15,20,35,0.56); }
+.arf-s1Stat { display: flex; align-items: baseline; gap: 8px; padding-top: 14px; border-top: 1px solid rgba(15,20,35,0.07); }
+.arf-s1StatNum { font-family: "Playfair Display", serif; font-size: 26px; font-weight: 700; letter-spacing: -0.03em; color: #0b1220; line-height: 1; }
+.arf-s1StatLabel { font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(15,20,35,0.36); }
+
+/* ════════════════════════════════════
+   SECTION 02 — STRATEGY (unchanged)
+════════════════════════════════════ */
+.arf-strategyRadar { position: relative; background: #0a0a0a; color: #fff; padding: 140px 0; overflow: hidden; }
+.arf-strategyRadarSpot { position: absolute; top: -20%; right: -10%; width: 800px; height: 800px; background: rgba(114,47,55,0.14); filter: blur(120px); border-radius: 999px; pointer-events: none; mix-blend-mode: screen; }
+.arf-strategyRadarWrap { width: min(1200px, calc(100% - 80px)); margin: 0 auto; position: relative; z-index: 1; }
+.arf-strategyRadarGrid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 72px; align-items: center; }
+.arf-strategyRadarCopy { position: relative; z-index: 2; }
+.arf-strategyRadarNum { position: absolute; top: -70px; left: -20px; font-family: "Playfair Display", serif; font-size: clamp(110px,8vw,170px); line-height: 0.9; color: rgba(255,255,255,0.06); user-select: none; pointer-events: none; }
+.arf-strategyRadarKicker { font-size: 12px; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(244,63,94,0.75); margin: 0 0 10px; }
+.arf-strategyRadarTitle { font-family: "Playfair Display", serif; font-size: clamp(44px,4.6vw,76px); line-height: 0.95; letter-spacing: -0.03em; margin: 0 0 22px; }
+.arf-strategyRadarTitle em { font-style: italic; color: rgba(255,255,255,0.45); }
+.arf-strategyRadarBody { max-width: 360px; display: grid; gap: 14px; font-size: 18px; line-height: 1.85; color: rgba(212,212,212,0.75); }
+.arf-strategyRadarUnderline { color: rgba(255,255,255,0.92); font-weight: 600; border-bottom: 1px solid rgba(244,63,94,0.30); padding-bottom: 1px; }
+.arf-radarStage { position: relative; height: 600px; width: 100%; display: grid; place-items: center; }
+.arf-radarRings { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+.arf-radarRings svg { max-width: 600px; max-height: 600px; }
+.arf-radarRing { stroke: rgba(255,255,255,0.06); stroke-width: 1; transition: stroke 300ms, stroke-width 300ms, opacity 300ms; }
+.arf-radarRing.is-active { stroke-width: 2; opacity: 0.75; filter: drop-shadow(0 0 18px rgba(255,255,255,0.18)); }
+.arf-radarPins { position: relative; width: 600px; height: 600px; }
+.arf-radarPin  { position: absolute; transform: translate(-50%,-50%); }
+.arf-radarPin.p1 { top: 38%; left: 66%; }
+.arf-radarPin.p2 { top: 70%; left: 32%; }
+.arf-radarPin.p3 { top: 22%; left: 28%; }
+.arf-radarTag { position: relative; display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: 18px; background: linear-gradient(135deg,rgba(255,255,255,0.14),rgba(255,255,255,0.06)); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.16); box-shadow: 0 28px 80px rgba(0,0,0,0.55),0 10px 26px rgba(114,47,55,0.16); transition: transform 260ms,border-color 260ms,background 260ms,box-shadow 260ms; cursor: crosshair; will-change: transform; }
+.arf-radarTag::before { content:""; position:absolute; inset:-18px; border-radius:22px; background:radial-gradient(closest-side,rgba(114,47,55,0.22),transparent 70%); filter:blur(18px); opacity:0.45; pointer-events:none; z-index:-1; }
+.arf-radarTag:hover { transform:translateY(-3px) scale(1.02); border-color:rgba(255,255,255,0.24); background:linear-gradient(135deg,rgba(255,255,255,0.18),rgba(255,255,255,0.08)); box-shadow:0 34px 92px rgba(0,0,0,0.60),0 18px 44px rgba(114,47,55,0.22); }
+.arf-radarIcon { width:42px; height:42px; display:grid; place-items:center; border-radius:999px; font-size:18px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); }
+.arf-radarText  { display:grid; gap:4px; }
+.arf-radarTitle { font-family:"Playfair Display",serif; font-size:18px; color:rgba(255,255,255,0.92); }
+.arf-radarSub   { font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:rgba(163,163,163,0.70); }
+.arf-radarTag.tone-amber::before { background:radial-gradient(closest-side,rgba(245,158,11,0.22),transparent 70%); }
+.arf-radarTag.tone-rose::before  { background:radial-gradient(closest-side,rgba(244,63,94,0.22),transparent 70%); }
+.arf-radarTag.tone-purple::before{ background:radial-gradient(closest-side,rgba(168,85,247,0.22),transparent 70%); }
+
+/* ════════════════════════════════════
+   FOOTER
+════════════════════════════════════ */
+.arf-footer {
+  background: #060606;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 52px 0 40px;
+  color: rgba(255,255,255,0.40);
+  font-size: 12px;
+}
+.arf-footerInner {
+  width: min(1200px, calc(100% - 80px));
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36px;
+}
+.arf-footerBack {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.25); text-decoration: none;
+  transition: color 220ms ease;
+}
+.arf-footerBack:hover { color: rgba(255,255,255,0.65); }
+.arf-footerNext {
+  display: inline-flex; align-items: center; gap: 14px;
+  text-decoration: none; padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  transition: all 240ms ease;
+}
+.arf-footerNext:hover {
+  border-color: rgba(220,38,38,0.40);
+  background: rgba(220,38,38,0.06);
+}
+.arf-footerNextLabel {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(255,255,255,0.55);
+  transition: color 240ms ease;
+}
+.arf-footerNext:hover .arf-footerNextLabel { color: rgba(255,255,255,0.85); }
+.arf-footerNextArrow {
+  font-size: 16px; color: rgba(220,38,38,0.70);
+  transition: transform 240ms ease;
+}
+.arf-footerNext:hover .arf-footerNextArrow { transform: translateX(4px); }
+.arf-footerLinks {
+  width: min(1200px, calc(100% - 80px));
+  margin: 0 auto 20px;
+  display: flex; gap: 28px;
+}
+.arf-footerLinks a {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.22); text-decoration: none; transition: color 220ms ease;
+}
+.arf-footerLinks a:hover { color: rgba(255,255,255,0.60); }
+.arf-footerCopy {
+  width: min(1200px, calc(100% - 80px));
+  margin: 0 auto; font-size: 11px;
+  color: rgba(255,255,255,0.14); letter-spacing: 0.06em;
+}
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE ≤980px — tablet
+════════════════════════════════════════════════════════ */
+@media (max-width: 980px) {
+  .arf-heroContent    { padding: 0 0 40px 24px; max-width: calc(100vw - 48px); }
+  .arf-heroTitle > :first-child { font-size: clamp(38px,9vw,54px); }
+  .arf-heroTitleAccent { font-size: clamp(46px,11vw,66px); }
+  .arf-heroDarkCard   { bottom: auto; top: 60px; right: 16px; gap: 14px; padding: 10px 14px; }
+  .arf-anchor         { left: 20px; top: 22px; }
+  .arf-heroBottleWrap { right: -8vw; width: clamp(280px,72vw,480px); }
+
+  .arf-s1             { padding: 80px 0 100px; }
+  .arf-s1Wrap         { width: min(900px, calc(100% - 40px)); }
+  .arf-s1Grid         { grid-template-columns: 1fr; gap: 32px; }
+  .arf-s1Sticky       { position: relative; top: auto; }
+  .arf-s1Desc         { max-width: 100%; }
+  .arf-s1Cards        { grid-template-columns: 1fr; }
+  .arf-s1QuoteMark::before { font-size: 80px; }
+
+  .arf-strategyRadarWrap  { width: min(900px,calc(100% - 40px)); }
+  .arf-strategyRadarGrid  { grid-template-columns: 1fr; gap: 34px; }
+  .arf-radarStage         { height: 460px; }
+  .arf-radarPins, .arf-radarRings svg { width:460px; height:460px; max-width:460px; max-height:460px; }
+  .arf-radarPin.p1 { top:40%; left:68%; }
+  .arf-radarPin.p2 { top:72%; left:34%; }
+  .arf-radarPin.p3 { top:20%; left:30%; }
+  .arf-strategyRadarBody  { max-width: 520px; }
+}
+
+/* ════════════════════════════════════════════════════════
+   MOBILE ≤600px — full mobile pass
+════════════════════════════════════════════════════════ */
+@media (max-width: 600px) {
+
+  /* ── Hero ── */
+  .arf-hero {
+    min-height: 100svh;
+    align-items: flex-end;
+  }
+  /* Hide meta card on mobile — not enough room */
+  .arf-heroDarkCard   { display: none; }
+  /* Anchor top-left */
+  .arf-anchor         { left: 20px; top: 20px; font-size: 10px; }
+  /* Bottle — push right, smaller */
+  .arf-heroBottleWrap {
+    right: -18vw;
+    width: clamp(220px, 68vw, 320px);
+    top: 0%; bottom: 0%;
+  }
+  /* Left gradient heavier so copy is readable over bottle */
+  .arf-bgLeftShadow {
+    background: linear-gradient(to right,
+      rgba(4,4,4,0.97) 0%,
+      rgba(4,4,4,0.85) 32%,
+      rgba(4,4,4,0.50) 55%,
+      transparent 72%);
+  }
+  /* Copy */
+  .arf-heroContent {
+    padding: 0 0 48px 20px;
+    max-width: calc(100vw - 24px);
+  }
+  .arf-heroTitle > :first-child { font-size: 38px; }
+  .arf-heroTitleAccent          { font-size: 46px; }
+  .arf-heroSubtitle             { font-size: 13px; line-height: 1.75; max-width: 220px; }
+  .arf-heroScroll               { display: none; }
+  .arf-heroCta                  { height: 42px; font-size: 12px; padding: 0 18px; }
+  .arf-heroActions              { gap: 14px; }
+
+  /* ── Section 01 ── */
+  .arf-s1 { padding: 60px 0 72px; }
+  .arf-s1Wrap { width: calc(100% - 32px); }
+  .arf-s1Grid { grid-template-columns: 1fr; gap: 20px; }
+  .arf-s1Sticky { position: relative; top: auto; }
+  .arf-s1Num {
+    font-size: 88px;
+    margin-left: -4px;
+    color: rgba(15,20,35,0.11);
+  }
+  .arf-s1Line  { margin: 8px 0 8px; }
+  .arf-s1Label { font-size: 10px; }
+  .arf-s1Desc  { font-size: 12px; max-width: 100%; }
+  .arf-s1Title { font-size: 24px; line-height: 1.10; }
+  .arf-s1TitleMuted { font-size: inherit; }
+  .arf-s1Body  { font-size: 14.5px; }
+  .arf-s1Cards { grid-template-columns: 1fr; gap: 12px; }
+  .arf-s1CardBody  { padding: 18px 18px 16px; }
+  .arf-s1CardTitle { font-size: 10px; }
+  .arf-s1CardText  { font-size: 13.5px; margin-bottom: 14px; }
+  .arf-s1StatNum   { font-size: 22px; }
+  .arf-s1StatLabel { font-size: 10px; }
+  .arf-s1QuoteMark::before { font-size: 68px; }
+
+  /* ── Section 02 — replace floating radar with vertical list ── */
+  .arf-strategyRadar  { padding: 64px 0 80px; }
+  .arf-strategyRadarWrap { width: calc(100% - 32px); }
+  .arf-strategyRadarGrid { grid-template-columns: 1fr; gap: 36px; }
+  .arf-strategyRadarNum  { display: none; }
+  .arf-strategyRadarTitle { font-size: clamp(32px, 9vw, 48px); }
+  .arf-strategyRadarBody  { font-size: 15px; max-width: 100%; }
+
+  /* Replace the absolute-positioned floating tags with a vertical stack */
+  .arf-radarStage  { height: auto; min-height: unset; display: block; }
+  .arf-radarRings  { display: none; }  /* hide SVG rings — useless at this size */
+  .arf-radarPins {
+    position: static;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 4px 0;
+  }
+  .arf-radarPin {
+    position: static;
+    transform: none;
+  }
+  .arf-radarPin.p1, .arf-radarPin.p2, .arf-radarPin.p3 {
+    position: static;
+    top: auto; left: auto;
+    transform: none;
+  }
+  .arf-radarTag {
+    width: 100%;
+    border-radius: 14px;
+    padding: 12px 16px;
+    gap: 12px;
+  }
+  .arf-radarIcon  { width: 36px; height: 36px; font-size: 15px; flex-shrink: 0; }
+  .arf-radarTitle { font-size: 16px; }
+  .arf-radarSub   { font-size: 9px; }
+
+}

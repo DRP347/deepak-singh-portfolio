@@ -1,0 +1,55 @@
+// src/case-studies/ProblemInsightSection.jsx
+
+export default function ProblemInsightSection() {
+  return (
+    <section className="arf-section">
+      <div className="arf-sectionWrap">
+        <div className="arf-split">
+          {/* LEFT COLUMN: Sticky Chapter Marker */}
+          <div className="arf-stickyCol">
+            <div className="arf-stickyInner">
+              <div className="arf-chapterNum">01</div>
+              <div className="arf-chapterLabel">The Challenge</div>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: The Story */}
+          <div className="arf-storyCol">
+            <div>
+              <h2 className="arf-hookTitle">
+                “Wine is an experience.
+                <br />
+                The website felt like a database.”
+              </h2>
+
+              <p className="arf-hookBody">
+                Arabian Red Fox had a world-class product, but their digital presence was stuck in 2010. Users were
+                getting lost in technical specs instead of falling in love with the brand story.
+              </p>
+
+              <div className="arf-storyDivider" />
+            </div>
+
+            <div className="arf-cardGrid">
+              <article className="arf-card">
+                <h4 className="arf-cardTitle">The Friction</h4>
+                <p className="arf-cardText">
+                  High bounce rates on product pages caused by overwhelming technical data and lack of emotional
+                  imagery.
+                </p>
+              </article>
+
+              <article className="arf-card">
+                <h4 className="arf-cardTitle">The Goal</h4>
+                <p className="arf-cardText">
+                  Create a “digital sommelier” experience that guides users through flavor profiles rather than just
+                  filters.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -1,0 +1,1784 @@
+/* =====================================================================
+   KUMO KITCHEN — COMPLETE CSS
+   Palette: warm charcoal, champagne gold, amber accents
+===================================================================== */
+
+.kk-page {
+  min-height: 100vh;
+  background: #060606;
+  color: #fff;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* ════════════════════════════════════════════
+   HERO
+════════════════════════════════════════════ */
+.kk-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 720px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  background: #060606;
+}
+
+.kk-heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.kk-bgBase {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 120% 100% at 62% 50%,
+    #1a140a 0%,
+    #0f0a05 28%,
+    #060606 55%,
+    #040404 100%
+  );
+}
+.kk-bgWarm {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 58% 78% at 68% 52%,
+    rgba(201, 169, 110, 0.2) 0%,
+    rgba(180, 140, 80, 0.1) 30%,
+    rgba(140, 100, 50, 0.05) 55%,
+    transparent 72%
+  );
+  filter: blur(10px);
+}
+.kk-bgLeftShadow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(4, 4, 4, 0.94) 0%,
+    rgba(4, 4, 4, 0.72) 22%,
+    rgba(4, 4, 4, 0.32) 42%,
+    transparent 58%
+  );
+}
+.kk-bgNoise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.042;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  background-size: 180px;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+.kk-bgSmoke {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      ellipse 80% 60% at 55% 70%,
+      rgba(40, 28, 10, 0.45) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 40% 50% at 72% 25%,
+      rgba(30, 18, 6, 0.3) 0%,
+      transparent 55%
+    );
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+.kk-bgRadialLight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 30% 55% at 65% 46%,
+    rgba(201, 169, 110, 0.06) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* Back link */
+.kk-anchor {
+  position: absolute;
+  top: 32px;
+  left: 44px;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.28);
+  transition: color 220ms ease;
+}
+.kk-anchor:hover {
+  color: rgba(255, 255, 255, 0.72);
+}
+.kk-anchorIcon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* Watermark */
+.kk-watermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  gap: 0;
+}
+.kk-wm1,
+.kk-wm2 {
+  display: block;
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-weight: 900;
+  font-size: clamp(60px, 13vw, 230px);
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+  user-select: none;
+  color: transparent;
+  white-space: nowrap;
+  mix-blend-mode: overlay;
+}
+.kk-wm1 {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+  transform: translateX(-1.5%);
+}
+.kk-wm2 {
+  -webkit-text-stroke: 1px rgba(201, 169, 110, 0.08);
+  transform: translateX(1.5%);
+}
+
+/* Vignette */
+.kk-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 105% 95% at 50% 46%,
+    transparent 10%,
+    rgba(0, 0, 0, 0.28) 68%,
+    rgba(0, 0, 0, 0.52) 100%
+  );
+}
+
+/* Hero Image (Bowl) */
+.kk-heroImageWrap {
+  position: absolute;
+  right: -4vw;
+  top: -5%;
+  bottom: -10%;
+  width: clamp(380px, 45vw, 680px);
+  z-index: 3;
+  pointer-events: none;
+  will-change: transform, opacity;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.kk-imageGlowOuter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-46%, -48%);
+  width: 130%;
+  height: 70%;
+  background: radial-gradient(
+    ellipse at 50% 52%,
+    rgba(201, 169, 110, 0.18) 0%,
+    rgba(180, 140, 80, 0.08) 45%,
+    transparent 68%
+  );
+  filter: blur(52px);
+  z-index: 0;
+}
+.kk-imageGlowInner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-46%, -50%);
+  width: 60%;
+  height: 50%;
+  background: radial-gradient(
+    ellipse at 48% 52%,
+    rgba(217, 119, 6, 0.14) 0%,
+    rgba(201, 169, 110, 0.06) 50%,
+    transparent 70%
+  );
+  filter: blur(30px);
+  z-index: 0;
+}
+.kk-heroImg {
+  position: relative;
+  z-index: 1;
+  width: auto;
+  height: 65%;
+  max-width: none;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  filter: drop-shadow(-18px 40px 60px rgba(0, 0, 0, 0.95))
+    drop-shadow(0px 0px 100px rgba(201, 169, 110, 0.16)) brightness(1.06)
+    contrast(1.08) saturate(1.1);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+/* 3D Canvas container */
+.kk-hero3dCanvas {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+}
+.kk-hero3dCanvas canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+.kk-imageFloor {
+  position: absolute;
+  bottom: 18%;
+  left: 50%;
+  transform: translateX(-46%);
+  width: 50%;
+  height: 30px;
+  background: radial-gradient(
+    ellipse,
+    rgba(201, 169, 110, 0.22) 0%,
+    transparent 70%
+  );
+  filter: blur(16px);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* Fades */
+.kk-heroFadeBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 38%;
+  z-index: 5;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    #060606 0%,
+    #060606 12%,
+    rgba(6, 6, 6, 0.85) 35%,
+    rgba(6, 6, 6, 0.4) 60%,
+    transparent 100%
+  );
+}
+.kk-heroFadeTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20%;
+  z-index: 5;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    #060606 0%,
+    rgba(6, 6, 6, 0.65) 45%,
+    transparent 100%
+  );
+}
+.kk-heroFadeLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 46%;
+  z-index: 5;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    rgba(4, 4, 4, 0.55) 0%,
+    rgba(4, 4, 4, 0.22) 65%,
+    transparent 100%
+  );
+}
+
+/* Copy */
+.kk-heroContent {
+  position: relative;
+  z-index: 10;
+  padding: 0 0 66px 60px;
+  max-width: 480px;
+}
+.kk-heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 18px;
+}
+.kk-heroBadgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c9a96e;
+  box-shadow: 0 0 10px rgba(201, 169, 110, 0.9),
+    0 0 22px rgba(201, 169, 110, 0.4);
+  flex-shrink: 0;
+  animation: kkPulse 2.6s ease-in-out infinite;
+}
+@keyframes kkPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(201, 169, 110, 0.85),
+      0 0 18px rgba(201, 169, 110, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(201, 169, 110, 1),
+      0 0 36px rgba(201, 169, 110, 0.55);
+  }
+}
+
+.kk-heroTitle {
+  font-family: "Playfair Display", "Times New Roman", serif;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  margin: 0 0 22px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.kk-heroTitle > :first-child {
+  font-size: clamp(52px, 5.6vw, 86px);
+}
+.kk-heroTitleAccent {
+  font-style: italic;
+  font-size: clamp(62px, 7vw, 108px);
+  color: rgba(201, 169, 110, 0.55);
+}
+
+.kk-heroSubtitle {
+  font-size: 15px;
+  line-height: 1.82;
+  color: rgba(255, 255, 255, 0.36);
+  margin: 0 0 32px;
+  max-width: 360px;
+}
+.kk-heroActions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.kk-heroCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  height: 46px;
+  padding: 0 26px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  color: #060606;
+  background: linear-gradient(135deg, #c9a96e 0%, #d4b87a 100%);
+  box-shadow: 0 0 0 1px rgba(201, 169, 110, 0.35),
+    0 14px 36px rgba(201, 169, 110, 0.2);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  letter-spacing: 0.015em;
+}
+.kk-heroCta:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 0 1px rgba(201, 169, 110, 0.55),
+    0 20px 48px rgba(201, 169, 110, 0.35);
+}
+.kk-heroCtaArrow {
+  display: inline-block;
+  transition: transform 220ms ease;
+}
+.kk-heroCta:hover .kk-heroCtaArrow {
+  transform: translate(3px, -3px);
+}
+.kk-heroScroll {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.18);
+  text-decoration: none;
+  transition: color 220ms ease;
+}
+.kk-heroScroll:hover {
+  color: rgba(255, 255, 255, 0.48);
+}
+
+/* Meta card */
+.kk-heroDarkCard {
+  position: absolute;
+  bottom: 52px;
+  right: 52px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 14px 24px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.028);
+  border: 1px solid rgba(255, 255, 255, 0.065);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  box-shadow: 0 22px 64px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.kk-darkCardItem {
+  text-align: left;
+}
+.kk-darkCardLabel {
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.26);
+  margin-bottom: 5px;
+}
+.kk-darkCardValue {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.72);
+}
+.kk-darkCardDivider {
+  width: 1px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.065);
+  flex-shrink: 0;
+}
+
+/* ════════════════════════════════════
+   SECTION 01 — THE CHALLENGE
+   Light section (matches ARF s1)
+════════════════════════════════════ */
+.kk-s1 {
+  position: relative;
+  background: #ffffff;
+  color: #0b1220;
+  padding: 120px 0 140px;
+  isolation: isolate;
+}
+.kk-s1Wrap {
+  width: min(1200px, calc(100% - 80px));
+  margin: 0 auto;
+}
+.kk-s1Grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.45fr;
+  gap: 72px;
+  align-items: start;
+}
+
+/* Left sticky */
+.kk-s1Left {
+  position: relative;
+}
+.kk-s1Sticky {
+  position: sticky;
+  top: 120px;
+}
+.kk-s1Num {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(100px, 10vw, 172px);
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  color: rgba(15, 20, 35, 0.14);
+  user-select: none;
+  margin-left: -8px;
+}
+.kk-s1Line {
+  width: 32px;
+  height: 2px;
+  background: rgba(180, 140, 60, 0.65);
+  border-radius: 999px;
+  margin: 14px 0 12px;
+}
+.kk-s1Label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(180, 140, 60, 0.9);
+}
+.kk-s1Desc {
+  margin: 12px 0 0;
+  font-size: 13px;
+  line-height: 1.75;
+  color: rgba(15, 20, 35, 0.4);
+  max-width: 190px;
+}
+
+/* Right story */
+.kk-s1Right {
+  display: grid;
+  gap: 36px;
+  padding-top: 10px;
+}
+
+/* Quote */
+.kk-s1Quote {
+  position: relative;
+  padding-top: 6px;
+}
+.kk-s1QuoteMark {
+  position: absolute;
+  top: -36px;
+  left: -12px;
+  width: 60px;
+  height: 60px;
+  pointer-events: none;
+}
+.kk-s1QuoteMark::before {
+  content: "\201C";
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 120px;
+  font-style: italic;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(180, 140, 60, 0.1);
+  user-select: none;
+}
+.kk-s1Title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(30px, 3vw, 48px);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: #0b1220;
+  margin: 0 0 18px;
+}
+.kk-s1TitleMuted {
+  color: rgba(11, 18, 32, 0.38);
+  font-style: italic;
+}
+.kk-s1Body {
+  font-size: 17px;
+  line-height: 1.82;
+  color: rgba(15, 20, 35, 0.58);
+  margin: 0;
+  max-width: 620px;
+}
+
+/* Divider */
+.kk-s1Divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.kk-s1DivLine {
+  flex: 1;
+  height: 1px;
+  background: rgba(15, 20, 35, 0.08);
+}
+.kk-s1DivLabel {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(15, 20, 35, 0.25);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Cards */
+.kk-s1Cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.kk-s1Card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 20, 35, 0.07);
+  box-shadow: 0 2px 4px rgba(15, 20, 35, 0.04),
+    0 12px 32px rgba(15, 20, 35, 0.06);
+  transition: box-shadow 280ms ease, transform 280ms ease;
+  cursor: default;
+}
+.kk-s1Card:hover {
+  box-shadow: 0 4px 8px rgba(15, 20, 35, 0.07),
+    0 20px 52px rgba(15, 20, 35, 0.12);
+}
+.kk-s1CardBar {
+  height: 3px;
+  width: 100%;
+}
+.kk-s1CardBarAmber {
+  background: linear-gradient(to right, #92400e, #d97706);
+}
+.kk-s1CardBarGold {
+  background: linear-gradient(to right, #8b6914, #c9a96e);
+}
+.kk-s1CardBody {
+  padding: 22px 22px 20px;
+}
+.kk-s1CardIcon {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: rgba(15, 20, 35, 0.2);
+  line-height: 1;
+}
+.kk-s1CardTitle {
+  margin: 0 0 9px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(15, 20, 35, 0.8);
+}
+.kk-s1CardText {
+  margin: 0 0 18px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(15, 20, 35, 0.56);
+}
+.kk-s1Stat {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(15, 20, 35, 0.07);
+}
+.kk-s1StatNum {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #0b1220;
+  line-height: 1;
+}
+.kk-s1StatLabel {
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(15, 20, 35, 0.36);
+}
+
+/* ════════════════════════════════════
+   SECTION 02 — STRATEGY / COMPOSING THE UMAMI
+════════════════════════════════════ */
+.kk-strategyRadar {
+  position: relative;
+  background: #0a0a0a;
+  color: #fff;
+  padding: 140px 0;
+  overflow: hidden;
+}
+.kk-strategyRadarSpot {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 800px;
+  height: 800px;
+  background: rgba(201, 169, 110, 0.1);
+  filter: blur(120px);
+  border-radius: 999px;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+.kk-strategyRadarWrap {
+  width: min(1200px, calc(100% - 80px));
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.kk-strategyRadarGrid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 72px;
+  align-items: center;
+}
+.kk-strategyRadarCopy {
+  position: relative;
+  z-index: 2;
+}
+.kk-strategyRadarNum {
+  position: absolute;
+  top: -70px;
+  left: -20px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(110px, 8vw, 170px);
+  line-height: 0.9;
+  color: rgba(255, 255, 255, 0.06);
+  user-select: none;
+  pointer-events: none;
+}
+.kk-strategyRadarKicker {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(201, 169, 110, 0.75);
+  margin: 0 0 10px;
+}
+.kk-strategyRadarTitle {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(44px, 4.6vw, 76px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin: 0 0 22px;
+}
+.kk-strategyRadarTitle em {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.45);
+}
+.kk-strategyRadarBody {
+  max-width: 360px;
+  display: grid;
+  gap: 14px;
+  font-size: 18px;
+  line-height: 1.85;
+  color: rgba(212, 212, 212, 0.75);
+}
+.kk-strategyRadarUnderline {
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.3);
+  padding-bottom: 1px;
+}
+
+/* Radar rings */
+.kk-radarStage {
+  position: relative;
+  height: 600px;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+.kk-radarRings {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+.kk-radarRings svg {
+  max-width: 600px;
+  max-height: 600px;
+}
+.kk-radarRing {
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 1;
+  transition: stroke 300ms, stroke-width 300ms, opacity 300ms;
+}
+.kk-radarRing.is-active {
+  stroke-width: 2;
+  opacity: 0.75;
+  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.18));
+}
+
+/* Radar pins */
+.kk-radarPins {
+  position: relative;
+  width: 600px;
+  height: 600px;
+}
+.kk-radarPin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.kk-radarPin.p1 {
+  top: 38%;
+  left: 66%;
+}
+.kk-radarPin.p2 {
+  top: 70%;
+  left: 32%;
+}
+.kk-radarPin.p3 {
+  top: 22%;
+  left: 28%;
+}
+
+/* Radar tags */
+.kk-radarTag {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.14),
+    rgba(255, 255, 255, 0.06)
+  );
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55),
+    0 10px 26px rgba(201, 169, 110, 0.12);
+  transition: transform 260ms, border-color 260ms, background 260ms,
+    box-shadow 260ms;
+  cursor: crosshair;
+  will-change: transform;
+}
+.kk-radarTag::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  border-radius: 22px;
+  filter: blur(18px);
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: -1;
+}
+.kk-radarTag:hover {
+  transform: translateY(-3px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.24);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.08)
+  );
+  box-shadow: 0 34px 92px rgba(0, 0, 0, 0.6),
+    0 18px 44px rgba(201, 169, 110, 0.18);
+}
+.kk-radarIcon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  font-size: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.kk-radarText {
+  display: grid;
+  gap: 4px;
+}
+.kk-radarTitle {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.92);
+}
+.kk-radarSub {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(163, 163, 163, 0.7);
+}
+
+/* Tone glow variants */
+.kk-radarTag.tone-gold::before {
+  background: radial-gradient(
+    closest-side,
+    rgba(201, 169, 110, 0.22),
+    transparent 70%
+  );
+}
+.kk-radarTag.tone-amber::before {
+  background: radial-gradient(
+    closest-side,
+    rgba(245, 158, 11, 0.22),
+    transparent 70%
+  );
+}
+.kk-radarTag.tone-red::before {
+  background: radial-gradient(
+    closest-side,
+    rgba(239, 68, 68, 0.22),
+    transparent 70%
+  );
+}
+
+/* ── Curated Bowls ── */
+.kk-bowlsSection {
+  margin-top: 100px;
+  padding-top: 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.kk-bowlsHeader {
+  margin-bottom: 40px;
+}
+.kk-bowlsKicker {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 10px;
+}
+.kk-bowlsTitle {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+  color: #fff;
+}
+.kk-bowlsSubtitle {
+  font-size: 16px;
+  line-height: 1.75;
+  color: rgba(200, 200, 200, 0.5);
+  max-width: 520px;
+  margin: 0;
+}
+.kk-bowlsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.kk-bowlCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.kk-bowlCard__imgWrap {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+.kk-bowlCard__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85) saturate(1.1);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s;
+}
+.kk-bowlCard:hover .kk-bowlCard__img {
+  transform: scale(1.06);
+  filter: brightness(1) saturate(1.2);
+}
+.kk-bowlCard__overlay {
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.kk-bowlCard__name {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 4px;
+}
+.kk-bowlCard__desc {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.5;
+  max-width: 200px;
+}
+.kk-bowlCard__price {
+  font-family: "Playfair Display", serif;
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(201, 169, 110, 0.7);
+  white-space: nowrap;
+}
+
+/* ════════════════════════════════════
+   SECTION 03 — THE INTERFACE (CSS classes replacing inline styles)
+════════════════════════════════════ */
+.kk-interfaceSection {
+  position: relative;
+  background: #080808;
+  color: #fff;
+  padding: 130px 0 180px;
+  overflow: hidden;
+}
+.kk-interfaceGlow {
+  position: absolute;
+  top: 8%;
+  right: -4%;
+  width: 640px;
+  height: 640px;
+  border-radius: 999px;
+  filter: blur(150px);
+  pointer-events: none;
+  z-index: 0;
+}
+.kk-interfaceWrap {
+  width: min(1200px, calc(100% - 40px));
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.kk-interfaceHeader {
+  display: grid;
+  grid-template-columns: 1fr 0.80fr;
+  gap: 40px;
+  margin-bottom: 72px;
+  align-items: flex-end;
+}
+.kk-interfaceNum {
+  position: absolute;
+  top: -50px;
+  left: -10px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(80px, 9vw, 150px);
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.04);
+  user-select: none;
+  letter-spacing: -0.06em;
+  pointer-events: none;
+}
+.kk-interfaceKicker {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 14px;
+}
+.kk-interfaceTitle {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(32px, 3.8vw, 60px);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin: 0;
+  color: #fff;
+}
+.kk-interfaceTitle em {
+  color: rgba(255, 255, 255, 0.36);
+  font-style: italic;
+}
+.kk-interfaceDesc {
+  font-size: 16px;
+  line-height: 1.85;
+  color: rgba(200, 200, 200, 0.55);
+  margin: 0;
+  align-self: flex-end;
+}
+.kk-interfaceDesktopGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* ════════════════════════════════════
+   AMBIANCE BREAK
+════════════════════════════════════ */
+.kk-ambiance {
+  position: relative;
+  height: 70vh;
+  min-height: 450px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.kk-ambianceGrain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: repeating-linear-gradient(
+      85deg,
+      transparent,
+      transparent 3px,
+      rgba(201, 169, 110, 0.012) 3px,
+      rgba(201, 169, 110, 0.012) 5px
+    ),
+    linear-gradient(135deg, #1a150e 0%, #0f0c08 40%, #0a0a0a 100%);
+}
+.kk-ambianceImg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.kk-ambianceImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5) saturate(0.9);
+}
+.kk-ambianceFade {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(to bottom, #060606 0%, transparent 25%),
+    linear-gradient(to top, #060606 0%, transparent 25%),
+    radial-gradient(ellipse at center, rgba(201, 169, 110, 0.04), transparent 70%);
+}
+.kk-ambianceContent {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 480px;
+  padding: 0 24px;
+}
+.kk-ambianceKicker {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(201, 169, 110, 0.6);
+  margin-bottom: 14px;
+}
+.kk-ambianceTitle {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin: 0 0 16px;
+}
+.kk-ambianceBody {
+  font-size: 15px;
+  line-height: 1.85;
+  color: rgba(200, 200, 200, 0.55);
+  margin: 0;
+}
+
+/* ════════════════════════════════════
+   SECTION 04 — MEASURED IMPACT
+════════════════════════════════════ */
+.kk-impact {
+  position: relative;
+  background: #060606;
+  padding: 120px 0 140px;
+  overflow: hidden;
+}
+.kk-impactGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 500px;
+  background: radial-gradient(
+    ellipse,
+    rgba(201, 169, 110, 0.04) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+.kk-impactWrap {
+  width: min(1200px, calc(100% - 80px));
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.kk-impactHeader {
+  text-align: center;
+  margin-bottom: 72px;
+}
+.kk-impactKicker {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(201, 169, 110, 0.55);
+  margin-bottom: 14px;
+}
+.kk-impactTitle {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(32px, 4vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #fff;
+  margin: 0;
+}
+.kk-impactGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.kk-metric {
+  text-align: center;
+  padding: 48px 24px;
+  position: relative;
+}
+.kk-metric::after {
+  content: "";
+  position: absolute;
+  top: 25%;
+  right: 0;
+  bottom: 25%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.06);
+}
+.kk-metric:last-child::after {
+  display: none;
+}
+.kk-metricValue {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(48px, 6vw, 80px);
+  font-weight: 300;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: 12px;
+  letter-spacing: -0.03em;
+}
+.kk-metricLabel {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.25);
+  max-width: 180px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE ≤980px — tablet
+════════════════════════════════════════════════════════ */
+@media (max-width: 980px) {
+  .kk-heroContent {
+    padding: 0 0 40px 24px;
+    max-width: calc(100vw - 48px);
+  }
+  .kk-heroTitle > :first-child {
+    font-size: clamp(38px, 9vw, 54px);
+  }
+  .kk-heroTitleAccent {
+    font-size: clamp(46px, 11vw, 66px);
+  }
+  .kk-heroDarkCard {
+    bottom: auto;
+    top: 60px;
+    right: 16px;
+    gap: 14px;
+    padding: 10px 14px;
+  }
+  .kk-anchor {
+    left: 20px;
+    top: 22px;
+  }
+  .kk-heroImageWrap {
+    right: -8vw;
+    width: clamp(280px, 55vw, 440px);
+  }
+
+  /* Section 01 */
+  .kk-s1 {
+    padding: 80px 0 100px;
+  }
+  .kk-s1Wrap {
+    width: min(900px, calc(100% - 40px));
+  }
+  .kk-s1Grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .kk-s1Sticky {
+    position: relative;
+    top: auto;
+  }
+  .kk-s1Desc {
+    max-width: 100%;
+  }
+  .kk-s1Cards {
+    grid-template-columns: 1fr;
+  }
+  .kk-s1QuoteMark::before {
+    font-size: 80px;
+  }
+
+  /* Section 02 — Strategy */
+  .kk-strategyRadarWrap {
+    width: min(900px, calc(100% - 40px));
+  }
+  .kk-strategyRadarGrid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+  .kk-radarStage {
+    height: 460px;
+    overflow: hidden;
+  }
+  .kk-radarPins,
+  .kk-radarRings svg {
+    width: 460px;
+    height: 460px;
+    max-width: 460px;
+    max-height: 460px;
+  }
+  .kk-radarPin.p1 {
+    top: 40%;
+    left: 68%;
+  }
+  .kk-radarPin.p2 {
+    top: 72%;
+    left: 34%;
+  }
+  .kk-radarPin.p3 {
+    top: 20%;
+    left: 30%;
+  }
+  .kk-strategyRadarBody {
+    max-width: 520px;
+  }
+  .kk-bowlsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Interface section */
+  .kk-interfaceSection {
+    padding: 100px 0 120px;
+  }
+  .kk-interfaceHeader {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .kk-interfaceDesktopGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* Impact */
+  .kk-impactGrid {
+    grid-template-columns: 1fr;
+  }
+  .kk-metric::after {
+    display: none;
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   MOBILE ≤600px — full mobile pass
+════════════════════════════════════════════════════════ */
+@media (max-width: 600px) {
+
+  /* ═══ HERO ═══ */
+  .kk-hero {
+    min-height: 100svh;
+    min-height: 100vh; /* fallback */
+    align-items: flex-end;
+  }
+  .kk-heroDarkCard {
+    display: none;
+  }
+  .kk-anchor {
+    left: 16px;
+    top: 16px;
+    font-size: 10px;
+    z-index: 30;
+  }
+
+  /*
+   * 3D Bowl — position it in the TOP-RIGHT quadrant of the hero
+   * so it doesn't compete with the copy at the bottom.
+   * This creates a clear visual: bowl above, copy below.
+   */
+  .kk-heroImageWrap {
+    right: -5vw;
+    left: auto;
+    top: 8%;
+    bottom: auto;
+    height: 45vh;
+    width: 75vw;
+    /* Center it more toward the right */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Strengthen bottom fade so copy zone is always clean */
+  .kk-heroFadeBottom {
+    height: 55%;
+    background: linear-gradient(
+      to top,
+      #060606 0%,
+      #060606 20%,
+      rgba(6, 6, 6, 0.95) 35%,
+      rgba(6, 6, 6, 0.7) 55%,
+      rgba(6, 6, 6, 0.3) 75%,
+      transparent 100%
+    );
+  }
+
+  /* Weaken left shadow on mobile — we don't need it since bowl is above */
+  .kk-bgLeftShadow {
+    background: linear-gradient(
+      to right,
+      rgba(4, 4, 4, 0.7) 0%,
+      rgba(4, 4, 4, 0.3) 40%,
+      transparent 70%
+    );
+  }
+
+  /* Watermark — smaller on mobile */
+  .kk-wm1,
+  .kk-wm2 {
+    font-size: clamp(48px, 18vw, 80px);
+  }
+
+  .kk-heroContent {
+    padding: 0 20px 48px;
+    max-width: 100%;
+    /* Ensure copy sits below the bowl zone */
+    position: relative;
+    z-index: 10;
+  }
+  .kk-heroTitle > :first-child {
+    font-size: clamp(36px, 10vw, 44px);
+  }
+  .kk-heroTitleAccent {
+    font-size: clamp(42px, 12vw, 52px);
+  }
+  .kk-heroSubtitle {
+    font-size: 13.5px;
+    line-height: 1.75;
+    max-width: 100%; /* full width now — bowl is above, not beside */
+    color: rgba(255, 255, 255, 0.42);
+  }
+  .kk-heroScroll {
+    display: none;
+  }
+  .kk-heroCta {
+    height: 42px;
+    font-size: 12px;
+    padding: 0 20px;
+  }
+  .kk-heroActions {
+    gap: 14px;
+  }
+
+  /* ═══ SECTION 01 — CHALLENGE (light bg) ═══ */
+  .kk-s1 {
+    padding: 56px 0 64px;
+  }
+  .kk-s1Wrap {
+    width: calc(100% - 32px);
+  }
+  .kk-s1Grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .kk-s1Sticky {
+    position: relative;
+    top: auto;
+  }
+  .kk-s1Num {
+    font-size: 80px;
+    margin-left: -4px;
+    color: rgba(15, 20, 35, 0.10);
+  }
+  .kk-s1Line {
+    margin: 8px 0 8px;
+  }
+  .kk-s1Label {
+    font-size: 10px;
+  }
+  .kk-s1Desc {
+    font-size: 12px;
+    max-width: 100%;
+  }
+  .kk-s1Title {
+    font-size: clamp(22px, 6vw, 28px);
+    line-height: 1.12;
+  }
+  .kk-s1Body {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  .kk-s1Cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .kk-s1CardBody {
+    padding: 16px 16px 14px;
+  }
+  .kk-s1CardTitle {
+    font-size: 9.5px;
+  }
+  .kk-s1CardText {
+    font-size: 13px;
+    margin-bottom: 14px;
+    line-height: 1.75;
+  }
+  .kk-s1StatNum {
+    font-size: 22px;
+  }
+  .kk-s1StatLabel {
+    font-size: 9.5px;
+  }
+  .kk-s1QuoteMark::before {
+    font-size: 60px;
+    top: -8px;
+    left: -6px;
+  }
+  .kk-s1Divider {
+    gap: 10px;
+  }
+  .kk-s1DivLabel {
+    font-size: 9px;
+  }
+
+  /* ═══ SECTION 02 — STRATEGY ═══ */
+  .kk-strategyRadar {
+    padding: 56px 0 64px;
+  }
+  .kk-strategyRadarWrap {
+    width: calc(100% - 32px);
+  }
+  .kk-strategyRadarGrid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .kk-strategyRadarNum {
+    display: none;
+  }
+  .kk-strategyRadarKicker {
+    font-size: 10px;
+  }
+  .kk-strategyRadarTitle {
+    font-size: clamp(30px, 8vw, 44px);
+    margin-bottom: 16px;
+  }
+  .kk-strategyRadarBody {
+    font-size: 14px;
+    max-width: 100%;
+    gap: 10px;
+  }
+
+  /* Radar → vertical stack on mobile (no floating pins) */
+  .kk-radarStage {
+    height: auto;
+    min-height: unset;
+    display: block;
+  }
+  .kk-radarRings {
+    display: none;
+  }
+  .kk-radarPins {
+    position: static;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 4px 0;
+  }
+  .kk-radarPin {
+    position: static !important;
+    transform: none !important;
+    top: auto !important;
+    left: auto !important;
+  }
+  .kk-radarTag {
+    width: 100%;
+    border-radius: 14px;
+    padding: 12px 14px;
+    gap: 12px;
+  }
+  .kk-radarTag::before {
+    display: none;
+  }
+  .kk-radarIcon {
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .kk-radarTitle {
+    font-size: 15px;
+  }
+  .kk-radarSub {
+    font-size: 8.5px;
+    letter-spacing: 0.18em;
+  }
+
+  /* ═══ CURATED BOWLS ═══ */
+  .kk-bowlsSection {
+    margin-top: 40px;
+    padding-top: 28px;
+  }
+  .kk-bowlsGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .kk-bowlsTitle {
+    font-size: 24px;
+  }
+  .kk-bowlsSubtitle {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .kk-bowlCard {
+    border-radius: 10px;
+  }
+  .kk-bowlCard__imgWrap {
+    aspect-ratio: 16 / 10;
+  }
+  .kk-bowlCard__overlay {
+    padding: 12px 14px;
+  }
+  .kk-bowlCard__name {
+    font-size: 16px;
+  }
+  .kk-bowlCard__desc {
+    font-size: 11px;
+    max-width: 180px;
+  }
+  .kk-bowlCard__price {
+    font-size: 13px;
+  }
+
+  /* ═══ SECTION 03 — INTERFACE ═══ */
+  .kk-interfaceSection {
+    padding: 64px 0 72px;
+  }
+  .kk-interfaceWrap {
+    width: calc(100% - 32px);
+  }
+  .kk-interfaceHeader {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .kk-interfaceNum {
+    top: -30px;
+    left: -6px;
+    font-size: clamp(60px, 16vw, 90px);
+  }
+  .kk-interfaceKicker {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+  .kk-interfaceTitle {
+    font-size: clamp(26px, 7vw, 36px);
+  }
+  .kk-interfaceGlow {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* ═══ AMBIANCE ═══ */
+  .kk-ambiance {
+    height: 45vh;
+    min-height: 280px;
+  }
+  .kk-ambianceKicker {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+  }
+  .kk-ambianceTitle {
+    font-size: clamp(22px, 6vw, 30px);
+    margin-bottom: 12px;
+  }
+  .kk-ambianceBody {
+    font-size: 12.5px;
+    line-height: 1.75;
+  }
+  .kk-ambianceContent {
+    padding: 0 20px;
+  }
+
+  /* ═══ IMPACT ═══ */
+  .kk-impact {
+    padding: 56px 0 64px;
+  }
+  .kk-impactWrap {
+    width: calc(100% - 32px);
+  }
+  .kk-impactHeader {
+    margin-bottom: 32px;
+  }
+  .kk-impactKicker {
+    font-size: 10px;
+  }
+  .kk-impactTitle {
+    font-size: clamp(24px, 6vw, 32px);
+  }
+  .kk-impactGrid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .kk-metric {
+    padding: 28px 16px;
+  }
+  .kk-metric::after {
+    top: auto;
+    right: 15%;
+    bottom: 0;
+    left: 15%;
+    width: auto;
+    height: 1px;
+  }
+  .kk-metric:last-child::after {
+    display: none;
+  }
+  .kk-metricValue {
+    font-size: clamp(40px, 12vw, 56px);
+  }
+  .kk-metricLabel {
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   SMALL MOBILE ≤380px — compact phones (iPhone SE, etc.)
+════════════════════════════════════════════════════════ */
+@media (max-width: 380px) {
+  .kk-heroContent {
+    padding: 0 16px 40px;
+  }
+  .kk-heroTitle > :first-child {
+    font-size: 32px;
+  }
+  .kk-heroTitleAccent {
+    font-size: 38px;
+  }
+  .kk-heroSubtitle {
+    font-size: 12.5px;
+  }
+  .kk-heroCta {
+    height: 38px;
+    font-size: 11px;
+    padding: 0 16px;
+  }
+  .kk-heroImageWrap {
+    height: 38vh;
+    width: 70vw;
+  }
+
+  .kk-s1Num {
+    font-size: 64px;
+  }
+  .kk-s1Title {
+    font-size: 20px;
+  }
+  .kk-s1Body {
+    font-size: 13px;
+  }
+
+  .kk-strategyRadarTitle {
+    font-size: 28px;
+  }
+
+  .kk-bowlCard__imgWrap {
+    aspect-ratio: 4 / 3;
+  }
+
+  .kk-ambianceTitle {
+    font-size: 20px;
+  }
+
+  .kk-metricValue {
+    font-size: 36px;
+  }
+}

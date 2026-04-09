@@ -1,0 +1,800 @@
+/* ==================================================================
+   PORTFOLIO REDESIGN — NEW STYLES
+   Add this to your index.css or create a new redesign.css file
+================================================================== */
+
+/* ==================================================================
+   HERO SECTION — REDESIGNED
+================================================================== */
+.hero-section-redesign {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 40px;
+  padding: 120px 48px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 3D Canvas — Smaller, contained to right */
+.hero-canvas-small {
+  position: relative !important;
+  width: 100%;
+  height: 100%;
+  max-height: 500px;
+  inset: unset !important;
+}
+
+/* Hero Content — Left aligned, above fold */
+.hero-content-redesign {
+  text-align: left;
+  max-width: 600px;
+  padding: 0;
+  z-index: 2;
+}
+
+/* NEW: Eyebrow text */
+.hero-eyebrow {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent1);
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+  padding: 6px 14px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 999px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+html[data-theme="dark"] .hero-eyebrow {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.3);
+  color: var(--accent2);
+}
+
+/* Hero subtitle enhancement */
+.hero-subtitle-highlight {
+  display: block;
+  margin-top: 8px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* CTA Button enhancement */
+.cta-primary-new {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cta-arrow {
+  transition: transform 0.25s ease;
+}
+
+.cta-primary-new:hover .cta-arrow {
+  transform: translateX(4px);
+}
+
+/* NEW: Scroll Indicator */
+.scroll-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 48px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.scroll-arrow {
+  font-size: 1.1rem;
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+.scroll-text {
+  opacity: 0.7;
+}
+
+/* Mobile Hero */
+@media (max-width: 768px) {
+  .hero-section-redesign {
+    grid-template-columns: 1fr;
+    padding: 140px 24px 60px;
+    text-align: center;
+  }
+
+  .hero-content-redesign {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .scroll-indicator {
+    justify-content: center;
+  }
+}
+
+
+/* ==================================================================
+   PROJECTS SECTION — REDESIGNED
+================================================================== */
+.projects-section-redesign {
+  background: var(--surface);
+}
+
+/* 2x3 or 3x2 Grid */
+.projects-grid-redesign {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+@media (min-width: 900px) {
+  .projects-grid-redesign {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .projects-grid-redesign {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Project Card — Redesigned */
+.project-card-redesign {
+  background: var(--bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: 
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.project-card-wrapper:hover .project-card-redesign {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.2);
+  border-color: var(--accent1);
+}
+
+html[data-theme="dark"] .project-card-wrapper:hover .project-card-redesign {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-color: var(--accent2);
+}
+
+/* Project Image with overlay */
+.project-image-redesign {
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.project-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+/* Project Content */
+.project-content-redesign {
+  padding: 18px 20px 20px;
+}
+
+.project-title-new {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+}
+
+/* NEW: Outcome metric */
+.project-outcome {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent1);
+  margin-bottom: 8px;
+}
+
+html[data-theme="dark"] .project-outcome {
+  color: var(--accent2);
+}
+
+.project-description-new {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+/* Tech Tags — Redesigned */
+.project-tech-tags-redesign {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tech-tag-new {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  color: var(--accent1);
+}
+
+html[data-theme="dark"] .tech-tag-new {
+  background: rgba(139, 92, 246, 0.12);
+  border-color: rgba(139, 92, 246, 0.25);
+  color: var(--accent2);
+}
+
+/* View All Link */
+.projects-view-all {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.view-all-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--accent1);
+  transition: gap 0.25s ease;
+}
+
+.view-all-link:hover {
+  gap: 12px;
+}
+
+.view-all-arrow {
+  transition: transform 0.25s ease;
+}
+
+.view-all-link:hover .view-all-arrow {
+  transform: translateX(4px);
+}
+
+/* Experiments Section */
+.experiments-section {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+
+.experiments-title {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.experiments-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.experiment-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  max-width: 400px;
+  transition: border-color 0.25s ease;
+}
+
+.experiment-card:hover {
+  border-color: var(--accent1);
+}
+
+.experiment-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+.experiment-content h4 {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.experiment-content p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+
+/* ==================================================================
+   ABOUT / TIMELINE — REDESIGNED
+================================================================== */
+.about-section-redesign {
+  background: var(--surface);
+}
+
+.about-timeline-redesign {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  position: relative;
+  padding: 20px 0;
+}
+
+/* Timeline Line — Gradient */
+.timeline-line-redesign {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    180deg,
+    var(--accent1) 0%,
+    var(--accent2) 50%,
+    var(--border) 100%
+  );
+  border-radius: 2px;
+}
+
+/* Timeline Item */
+.timeline-item-redesign {
+  display: flex;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.timeline-item-redesign:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-item-wrapper:nth-child(odd) .timeline-item-redesign {
+  justify-content: flex-start;
+  padding-right: calc(50% + 40px);
+}
+
+.timeline-item-wrapper:nth-child(even) .timeline-item-redesign {
+  justify-content: flex-end;
+  padding-left: calc(50% + 40px);
+}
+
+/* Timeline Icon — With Emoji */
+.timeline-icon-redesign {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface);
+  border: 3px solid var(--accent1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+html[data-theme="dark"] .timeline-icon-redesign {
+  background: var(--bg);
+  border-color: var(--accent2);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+}
+
+.timeline-emoji {
+  font-size: 1.2rem;
+}
+
+/* Timeline Card */
+.timeline-card-redesign {
+  width: calc(50% - 60px);
+  padding: 20px 24px;
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+html[data-theme="dark"] .timeline-card-redesign {
+  background: rgba(15, 23, 42, 0.6);
+}
+
+/* Year Badge */
+.timeline-year-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent1);
+  background: rgba(59, 130, 246, 0.1);
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+html[data-theme="dark"] .timeline-year-badge {
+  color: var(--accent2);
+  background: rgba(139, 92, 246, 0.15);
+}
+
+.timeline-title-new {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.timeline-description-new {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* What's Next Card — Special styling */
+.timeline-card-next {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.08) 0%,
+    rgba(139, 92, 246, 0.08) 100%
+  );
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+html[data-theme="dark"] .timeline-card-next {
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.15) 0%,
+    rgba(59, 130, 246, 0.1) 100%
+  );
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+/* Timeline CTA Section */
+.timeline-cta-section {
+  max-width: 600px;
+  margin: 48px auto 40px;
+}
+
+.timeline-cta-card {
+  padding: 28px 32px;
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.06) 0%,
+    rgba(139, 92, 246, 0.06) 100%
+  );
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+html[data-theme="dark"] .timeline-cta-card {
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.1) 0%,
+    rgba(59, 130, 246, 0.05) 100%
+  );
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.timeline-cta-text {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+.timeline-cta-text strong {
+  color: var(--text);
+}
+
+.timeline-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  color: #fff;
+  font-weight: 600;
+  border-radius: 999px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.timeline-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.35);
+}
+
+/* Fun Facts — Redesigned */
+.fun-facts-redesign {
+  max-width: 800px;
+  margin: 40px auto 0;
+}
+
+.fun-facts-title {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.facts-grid-redesign {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.fact-card-redesign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px;
+}
+
+.fact-icon {
+  font-size: 1.5rem;
+}
+
+.fact-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.fact-card-back-redesign {
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  color: #fff;
+}
+
+/* Mobile Timeline */
+@media (max-width: 768px) {
+  .timeline-line-redesign {
+    left: 24px;
+  }
+
+  .timeline-icon-redesign {
+    left: 24px;
+  }
+
+  .timeline-item-wrapper:nth-child(odd) .timeline-item-redesign,
+  .timeline-item-wrapper:nth-child(even) .timeline-item-redesign {
+    justify-content: flex-start;
+    padding-left: 60px;
+    padding-right: 0;
+  }
+
+  .timeline-card-redesign {
+    width: 100%;
+  }
+}
+
+
+/* ==================================================================
+   TESTIMONIALS — REDESIGNED
+================================================================== */
+.testimonials-section-redesign {
+  background: var(--bg);
+}
+
+/* Grid Layout instead of Marquee */
+.testimonials-grid-redesign {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+@media (min-width: 800px) {
+  .testimonials-grid-redesign {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Testimonial Card — Large */
+.testimonial-card-redesign {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  width: 100%;
+  transition: 
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.testimonial-card-redesign:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.12);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+html[data-theme="dark"] .testimonial-card-redesign:hover {
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+/* Quote */
+.testimonial-quote-redesign {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.quote-mark {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--accent1);
+  opacity: 0.3;
+  position: absolute;
+  top: -10px;
+  left: -5px;
+}
+
+html[data-theme="dark"] .quote-mark {
+  color: var(--accent2);
+}
+
+.testimonial-quote-redesign p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text);
+  padding-left: 20px;
+}
+
+/* Highlighted metric */
+.testimonial-highlight {
+  display: inline;
+  padding: 2px 8px 2px 10px;
+  margin: 0 2px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Author */
+.testimonial-author-redesign {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.testimonial-avatar-redesign {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.testimonial-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.testimonial-role {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Trust Indicators */
+.trust-indicators {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 48px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.trust-item {
+  text-align: center;
+}
+
+.trust-number {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent1);
+  margin-bottom: 4px;
+}
+
+html[data-theme="dark"] .trust-number {
+  color: var(--accent2);
+}
+
+.trust-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.trust-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+}
+
+@media (max-width: 600px) {
+  .trust-indicators {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .trust-divider {
+    width: 60px;
+    height: 1px;
+  }
+}
+
+
+/* ==================================================================
+   FLOATING CTA BUTTON (Optional)
+================================================================== */
+.floating-cta {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: floatCta 3s ease-in-out infinite;
+}
+
+.floating-cta:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(59, 130, 246, 0.5);
+}
+
+@keyframes floatCta {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@media (max-width: 768px) {
+  .floating-cta {
+    bottom: 16px;
+    right: 16px;
+    padding: 12px 20px;
+    font-size: 0.85rem;
+  }
+}
