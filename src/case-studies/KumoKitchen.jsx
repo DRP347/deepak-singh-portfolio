@@ -8,11 +8,11 @@ import KumoStrategy from "./KumoStrategy";
 import KumoInterface from "./KumoInterface";
 import "./kumo-kitchen.css";
 
-/* ─────────────────────────────────
+/* ─
    3D RAMEN BOWL MODEL
    Uses the same .glb from kumokitchen.vercel.app
    Place the file at: public/models/ramen_bowl.glb
-───────────────────────────────── */
+─ */
 function RamenBowlModel() {
   const modelRef = useRef();
   const { scene } = useGLTF("/models/ramen_bowl.glb");
@@ -84,7 +84,7 @@ export default function KumoKitchen() {
   return (
     <div className="kk-page">
       <section className="kk-hero" ref={heroRef}>
-        {/* ── Layered Background ── */}
+        {/*  Layered Background  */}
         <div className="kk-heroBg" aria-hidden="true">
           <div className="kk-bgBase" />
           <div className="kk-bgWarm" />
@@ -94,13 +94,13 @@ export default function KumoKitchen() {
           <div className="kk-bgRadialLight" />
         </div>
 
-        {/* ── Back Link ── */}
+        {/*  Back Link  */}
         <a href="/" className="kk-anchor">
           <span className="kk-anchorIcon">←</span>
           <span className="kk-anchorText">Back</span>
         </a>
 
-        {/* ── Watermark ── */}
+        {/*  Watermark  */}
         <div className="kk-watermark" aria-hidden="true">
           <span className="kk-wm1">KUMO</span>
           <span className="kk-wm2">KITCHEN</span>
@@ -108,7 +108,7 @@ export default function KumoKitchen() {
 
         <div className="kk-vignette" aria-hidden="true" />
 
-        {/* ── 3D Ramen Bowl ── */}
+        {/*  3D Ramen Bowl  */}
         <motion.div
           className="kk-heroImageWrap"
           initial={{ opacity: 0, scale: 0.96 }}
@@ -152,12 +152,12 @@ export default function KumoKitchen() {
           <div className="kk-imageFloor" aria-hidden="true" />
         </motion.div>
 
-        {/* ── Fades ── */}
+        {/*  Fades  */}
         <div className="kk-heroFadeBottom" aria-hidden="true" />
         <div className="kk-heroFadeTop" aria-hidden="true" />
         <div className="kk-heroFadeLeft" aria-hidden="true" />
 
-        {/* ── Hero Copy ── */}
+        {/*  Hero Copy  */}
         <motion.div
           className="kk-heroContent"
           style={{ opacity: copyOp, y: copyY }}
@@ -242,7 +242,7 @@ export default function KumoKitchen() {
           </motion.div>
         </motion.div>
 
-        {/* ── Meta Card ── */}
+        {/*  Meta Card  */}
         <motion.div
           className="kk-heroDarkCard"
           initial={{ opacity: 0, y: 10 }}
