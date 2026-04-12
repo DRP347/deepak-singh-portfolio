@@ -11,8 +11,8 @@ const DEFAULT_SEO = {
   defaultTitle: 'Deepak Singh – Web Designer & Developer',
   defaultDescription:
     'Deepak Singh is a Web Alchemist and creative web developer who builds immersive, story-led web experiences with React, Three.js, and thoughtful UI/UX.',
-  defaultImage: '/img/og-image.webp',
-  twitterHandle: '@DRajput37654',
+  defaultImage: '/img/thumb.png',
+  twitterHandle: '@Deepak__Singh4',
 };
 
 export default function SEO({
