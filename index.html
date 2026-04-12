@@ -1,13 +1,21 @@
 <!doctype html>
 <html lang="en" data-theme="light">
   <head>
-    
     <meta charset="UTF-8" />
     <title>Deepak Singh – Web Designer & Developer</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -33,58 +41,49 @@
     <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.deepakksingh.com/" />
-    <meta
-      property="og:title"
-      content="Deepak Singh — Web Alchemist & Creative Web Developer"
-    />
+    <meta property="og:title" content="Deepak Singh — Web Alchemist & Creative Web Developer" />
     <meta
       property="og:description"
       content="Turning pixels and code into living, breathing experiences. Immersive, performance-aware web experiences crafted with React, Three.js, and motion."
     />
-    <!-- Update this image path to the actual OG image you upload -->
-    <meta
-      property="og:image"
-      content="public/img/og-image.webp"
-    />
+    <!-- FIXED: Use absolute URL for OG image -->
+    <meta property="og:image" content="https://www.deepakksingh.com/img/og-image.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Deepak Singh — Web Alchemist" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Deepak Singh — Web Alchemist & Creative Web Developer"
-    />
+    <meta name="twitter:title" content="Deepak Singh — Web Alchemist & Creative Web Developer" />
     <meta
       name="twitter:description"
       content="Turning pixels and code into living, breathing experiences with React, Three.js, and motion."
     />
-    <meta
-      name="twitter:image"
-      content="public/img/og-image.webp"
-    />
+    <!-- FIXED: Use absolute URL for Twitter image -->
+    <meta name="twitter:image" content="https://www.deepakksingh.com/img/og-image.webp" />
     <meta name="twitter:creator" content="@DRajput37654" />
 
+    <!-- Structured Data -->
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Deepak Singh",
-  "url": "https://deepakksingh.com",
-  "jobTitle": "Web Designer & Web Developer",
-  "sameAs": [
-    "https://www.linkedin.com/in/singh-deepak-wd",
-    "https://github.com/DRP347",
-    "https://x.com/DRajput37654"
-  ]
-}
-</script>
-
-
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Deepak Singh",
+        "url": "https://www.deepakksingh.com",
+        "jobTitle": "Web Designer & Web Developer",
+        "description": "Web Alchemist and creative web developer who builds immersive, story-led web experiences.",
+        "image": "https://www.deepakksingh.com/img/og-image.webp",
+        "sameAs": [
+          "https://www.linkedin.com/in/singh-deepak-wd",
+          "https://github.com/DRP347",
+          "https://x.com/DRajput37654"
+        ],
+        "knowsAbout": ["React", "Three.js", "Web Development", "UI/UX Design", "Frontend Development"]
+      }
+    </script>
   </head>
 
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-    
   </body>
 </html>
