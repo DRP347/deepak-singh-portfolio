@@ -794,7 +794,7 @@ const ContactSection = () => (
       </p>
       <br />
       <a
-        href="https://cal.com/singh-deepak-lrx6mm"
+        href="https://cal.com/deepak-singh"
         className="contact-button"
         target="_blank"
         rel="noopener noreferrer"

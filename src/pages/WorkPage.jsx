@@ -333,7 +333,7 @@ const WorkPage = () => {
         <h2>Have a project in mind?</h2>
         <p>Let's create something amazing together.</p>
         <a 
-          href="https://cal.com/singh-deepak-lrx6mm" 
+          href="https://cal.com/deepak-singh" 
           className="cta-button"
           target="_blank"
           rel="noopener noreferrer"

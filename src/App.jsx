@@ -65,7 +65,7 @@ const aboutTimelineData = [
     icon: "04",
     title: "What's Next",
     description:
-      "I'm chasing bigger challenges — pushing deeper into 3D, motion, and storytelling.",
+      "I'm chasing bigger challenges — pushing deeper into 3D, motion and storytelling.",
   },
 ];
 
@@ -155,7 +155,7 @@ const projectsData = [
     description: "Japanese restaurant with 3D menu experience.",
     outcome: "+35% online reservations",
     tech: ["React", "Three.js", "Framer Motion"],
-    image: "img/proj2.webp",
+    image: "img/kumo-thumb.webp",
     link: "/case-study/kumo-kitchen",
     alt: "Kumo Kitchen Website",
   },
@@ -166,7 +166,7 @@ const projectsData = [
     description: "Browser-based DAW for music production.",
     outcome: "<5 min onboarding",
     tech: ["Web Audio", "Canvas", "React"],
-    image: "img/proj2.webp",
+    image: "img/pulse-thumb.webp",
     link: "/case-study/pulse-studio",
     alt: "Pulse Studio DAW",
   },
@@ -183,14 +183,14 @@ const projectsData = [
   },
   {
     id: 5,
-    title: "Luxe Commerce",
+    title: "The Garment Guy",
     category: "Development",
-    description: "Premium e-commerce with micro-interactions.",
+    description: "Premium e-commerce platform with immersive product experiences.",
     outcome: "+28% conversion rate",
-    tech: ["Shopify", "Liquid", "Alpine.js"],
-    image: "img/proj2.webp",
-    link: "#",
-    alt: "Luxe Commerce",
+    tech: ["Next.js", "Tailwind CSS", "MongoDB"],
+    image: "img/garment-thumb.webp",
+    link: "/case-study/the-garment-guy",
+    alt: "The Garment Guy",
   },
   {
     id: 6,
@@ -853,7 +853,7 @@ const ContactSection = () => (
       </p>
 
       <a
-        href="https://cal.com/singh-deepak-lrx6mm"
+        href="https://cal.com/deepak-singh"
         className="contact-button"
         target="_blank"
         rel="noopener noreferrer"
