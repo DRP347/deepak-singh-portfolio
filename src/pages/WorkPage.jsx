@@ -60,10 +60,10 @@ const allProjects = [
   },
   {
     id: 5,
-    title: "Web Alchemist",
+    title: "Portfolio Experience",
     category: "Personal",
     description: "This portfolio — a 3D-enhanced creative experience showcasing my work.",
-    outcome: "Awwwards-level design",
+    outcome: "A polished portfolio demonstrating interactive 3D and motion",
     tech: ["React", "Three.js", "Framer Motion"],
     image: "img/proj1.webp",
     link: "/case-study/portfolio",

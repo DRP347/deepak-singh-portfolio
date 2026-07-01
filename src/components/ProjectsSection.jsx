@@ -62,9 +62,9 @@ const projectsData = [
 const experimentalProjects = [
   {
     id: 100,
-    title: "Web Alchemist",
+    title: "Portfolio Experience",
     category: "Personal",
-    description: "This portfolio — a 3D-enhanced creative experience.",
+    description: "This portfolio — a 3D-enhanced creative experience showcasing selected work and experiments.",
     tech: ["React", "Three.js", "Framer Motion", "Tailwind CSS"],
     image: "img/proj1.webp",
     link: "/case-study/portfolio",

@@ -10,7 +10,7 @@ const DEFAULT_SEO = {
   siteUrl: 'https://www.deepakksingh.com',
   defaultTitle: 'Deepak Singh – Web Designer & Developer',
   defaultDescription:
-    'Deepak Singh is a Web Alchemist and creative web developer who builds immersive, story-led web experiences with React, Three.js, and thoughtful UI/UX.',
+    'Deepak Singh is a Digital Experience Designer and front-end developer crafting immersive, performance-minded web experiences using React, Three.js, and motion design.',
   defaultImage: '/img/thumb.png',
   twitterHandle: '@Deepak__Singh4',
 };

@@ -145,7 +145,7 @@ const HeroSection = ({ theme }) => {
         </motion.span>
 
         <h1>
-          <AnimatedText text="Web Alchemist" className="hero-title-gradient" />
+          <AnimatedText text="Digital Experience Designer" className="hero-title-gradient" />
         </h1>
 
         <motion.p

@@ -44,7 +44,7 @@ const PortfolioCaseStudy = ({ theme }) => {
             animate="visible"
             custom={0}
           >
-            Deepak Singh — Web Alchemist
+            Deepak Singh — Digital Experience Designer
           </motion.p>
 
           <motion.h1
@@ -116,8 +116,8 @@ const PortfolioCaseStudy = ({ theme }) => {
             This portfolio isn’t just a gallery of projects — it’s a designed
             journey through how I think about interfaces, motion, and 3D on the
             web. The hero uses an R3F-powered 3D sculpture, scroll-tuned
-            animation, and time-based theming to introduce me as a “Web
-            Alchemist” rather than just another frontend developer.
+            animation, and time-based theming to introduce me as a
+            Digital Experience Designer rather than just another frontend developer.
           </motion.p>
         </section>
 
