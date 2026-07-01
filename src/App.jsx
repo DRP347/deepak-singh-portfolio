@@ -172,17 +172,6 @@ const projectsData = [
   },
   {
     id: 4,
-    title: "Finova Dashboard",
-    category: "Design",
-    description: "Real-time financial analytics platform.",
-    outcome: "60% faster insights",
-    tech: ["React", "D3.js", "TypeScript"],
-    image: "img/proj2.webp",
-    link: "#",
-    alt: "Finova Dashboard",
-  },
-  {
-    id: 5,
     title: "The Garment Guy",
     category: "Development",
     description: "Premium e-commerce platform with immersive product experiences.",
@@ -191,17 +180,6 @@ const projectsData = [
     image: "img/garment-thumb.webp",
     link: "/case-study/the-garment-guy",
     alt: "The Garment Guy",
-  },
-  {
-    id: 6,
-    title: "Stride Health",
-    category: "Design",
-    description: "Fitness tracking app with gamification.",
-    outcome: "4.8★ App Store",
-    tech: ["React Native", "HealthKit"],
-    image: "img/proj2.webp",
-    link: "#",
-    alt: "Stride Health App",
   },
 ];
 
@@ -326,6 +304,7 @@ const HeroSceneContent = ({ theme }) => (
   </>
 );
 
+useGLTF.preload("/vr_thinker.glb");
 
 // ===============================================================
 // HERO SECTION — ORIGINAL STRUCTURE + IMPROVEMENTS
@@ -343,7 +322,7 @@ const HeroSection = ({ theme }) => {
           <Canvas
             camera={{ fov: 45 }}
             gl={{ antialias: true, alpha: true }}
-            dpr={[1, 1.5]}
+            dpr={[1, 1.25]}
           >
             <Suspense fallback={null}>
               <HeroSceneContent theme={theme} />
@@ -869,35 +848,77 @@ const ContactSection = () => (
 // FOOTER
 // ===============================================================
 
-const Footer = ({ navLinks }) => (
-  <footer className="footer">
-    <nav className="footer-links" aria-label="Footer navigation">
-      {navLinks.map((link) => (
-        <a key={link.href} href={link.href}>
-          {link.title}
-        </a>
-      ))}
-    </nav>
+const Footer = ({ navLinks }) => {
+  const socialLinks = [
+    {
+      label: "GitHub",
+      href: "https://github.com/DRP347",
+      icon: (
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.263.82-.582 0-.287-.01-1.05-.015-2.06-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.24 1.84 1.24 1.07 1.837 2.807 1.307 3.492.998.108-.775.418-1.308.76-1.608-2.665-.303-5.467-1.334-5.467-5.934 0-1.31.47-2.382 1.235-3.22-.125-.303-.535-1.523.115-3.176 0 0 1.005-.322 3.3 1.23a11.52 11.52 0 0 1 3.005-.403c1.02.005 2.045.138 3.005.403 2.29-1.552 3.295-1.23 3.295-1.23.655 1.653.245 2.873.12 3.176.77.838 1.235 1.91 1.235 3.22 0 4.61-2.805 5.625-5.475 5.923.43.37.815 1.102.815 2.222 0 1.606-.015 2.896-.015 3.286 0 .32.215.7.825.58C20.565 21.795 24 17.297 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      ),
+    },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/singh-deepak-wd",
+      icon: (
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5C4.98 5.43 3.42 7 1.5 7S-2 5.43-2 3.5 0.56 0 2.48 0s2.5 1.57 2.5 3.5zm.02 4.5H0V24h5V8h-.01zM8 8h4.8v2.16h.07c.67-1.27 2.3-2.6 4.74-2.6C23 7.56 24 10.3 24 14.35V24h-5v-9.05c0-2.16-.04-4.94-3.01-4.94-3.01 0-3.47 2.34-3.47 4.78V24H8V8z"/></svg>
+      ),
+    },
+    {
+      label: "X",
+      href: "https://x.com/DRajput37654",
+      icon: (
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3.5 3 12 11.5 20.5 3 22 4.5 13.5 13 22 21.5 20.5 23 12 14.5 3.5 23 2 21.5 10.5 13 2 4.5Z"/></svg>
+      ),
+    },
+    {
+      label: "Dribbble",
+      href: "https://dribbble.com/singh-deepak",
+      icon: (
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0C5.373 0 0 5.373 0 12c0 6.627 5.373 12 12 12s12-5.373 12-12C24 5.373 18.627 0 12 0zm5.96 6.178c1.94 1.68 2.73 4.32 2.005 6.84-1.29-.27-3.03-.55-4.87-.28-.2-.55-.42-1.05-.7-1.57 1.88-1.03 3.24-2.49 3.56-4.1zM12 2.4c2.79 0 5.3 1.1 7.12 2.88-.34 1.44-1.56 2.81-3.3 3.78-1.33-2.36-2.88-4.37-3.98-5.43.47-.16.98-.23 1.76-.23zm-3.25.54c1.06 1.14 2.71 3.21 4.08 5.6-1.6.8-3.37 1.12-4.91 1.22-.74-1.82-.79-3.67-.28-5.6zm-2.87.82c-.4 1.7-.34 3.47.3 5.14-2.04.45-3.84.27-4.76.17.58-2.16 2.12-3.97 4.16-5.31zM2.4 12.82c.93.14 2.88.25 5.06-.18.26.48.56.95.86 1.42-2.15.96-4.14 1.29-5.22 1.09-.26-.01-.49-.04-.7-.08.13-.86.36-1.7.69-2.25zm2.87 4.45c1.03-.25 2.93-.82 5.1-1.8.64 1.06 1.32 2 2.09 2.74-2.06.97-4.42 1.13-6.66.45-.17-.3-.31-.63-.53-.94zm7.14 2.27c-1.18-1.41-2.1-3.25-2.79-5.24 2.07-.2 4.35.05 6.43.75-.43 2.06-1.53 3.94-3.64 4.49zM18.44 7.7c.59 1.46.26 3.1-.75 4.37-1.92-.28-3.9-.15-5.6.26-.27-.55-.53-1.1-.81-1.65 1.4-1.47 3.33-2.61 5.16-3.18.48.02.95.04 1.2.2z"/></svg>
+      ),
+    },
+    {
+      label: "WhatsApp",
+      href: "https://wa.me/7202809157",
+      icon: (
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.52 3.48A11.87 11.87 0 0 0 12 0C5.373 0 0 5.373 0 12c0 2.12.56 4.1 1.54 5.81L0 24l6.38-1.68A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12 0-3.2-1.24-6.16-3.48-8.52zM12 21.6c-1.84 0-3.63-.5-5.18-1.4l-.37-.22-3.79 1 1-3.7-.24-.38A9.4 9.4 0 0 1 2.4 12c0-5.24 4.26-9.5 9.5-9.5 2.54 0 4.92.99 6.72 2.8a9.45 9.45 0 0 1 2.8 6.72c0 5.24-4.26 9.5-9.5 9.5zm5.2-7.35c-.28-.14-1.64-.8-1.9-.9-.26-.1-.46-.14-.66.14s-.76.9-.94 1.08c-.17.17-.33.19-.61.07-.28-.12-1.2-.44-2.28-1.4-.84-.74-1.4-1.66-1.57-1.94-.17-.28-.02-.43.12-.57.12-.12.28-.31.42-.46.14-.15.19-.26.28-.44.09-.17.05-.33-.02-.46-.07-.12-.66-1.6-.9-2.2-.24-.58-.48-.5-.66-.51-.17-.01-.37-.01-.57-.01-.19 0-.5.07-.77.33-.27.27-1.05 1.02-1.05 2.48 0 1.46 1.08 2.88 1.22 3.08.14.2 2.1 3.2 5.1 4.48.71.31 1.26.5 1.69.64.71.23 1.36.2 1.87.12.57-.08 1.64-.67 1.88-1.31.24-.64.24-1.19.17-1.31-.06-.11-.22-.18-.46-.32z"/></svg>
+      ),
+    },
+  ];
 
-    <div className="footer-socials">
-      <a href="https://github.com/DRP347" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <span>/</span>
-      <a href="https://www.linkedin.com/in/singh-deepak-wd" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <span>/</span>
-      <a href="https://x.com/DRajput37654" target="_blank" rel="noopener noreferrer">X</a>
-      <span>/</span>
-      <a href="https://dribbble.com/singh-deepak" target="_blank" rel="noopener noreferrer">Dribbble</a>
-      <span>/</span>
-      <a href="https://wa.me/7202809157" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-    </div>
+  return (
+    <footer className="footer">
+      <nav className="footer-links" aria-label="Footer navigation">
+        {navLinks.map((link) => (
+          <a key={link.href} href={link.href}>
+            {link.title}
+          </a>
+        ))}
+        <a href="/terms">Terms & Conditions</a>
+        <a href="/cookies">Cookies</a>
+      </nav>
 
-    <p className="footer-credit">
-      © {new Date().getFullYear()} Deepak Singh. All Rights Reserved.
-    </p>
-  </footer>
-);
+      <div className="footer-socials">
+        {socialLinks.map(({ label, href, icon }) => (
+          <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="footer-social-link">
+            <span className="footer-social-icon">{icon}</span>
+            <span>{label}</span>
+          </a>
+        ))}
+      </div>
 
+      <div className="footer-legal">
+        <a href="/terms">Terms & Conditions</a>
+        <a href="/cookies">Cookies</a>
+      </div>
 
+      <p className="footer-credit">
+        © {new Date().getFullYear()} Deepak Singh. All Rights Reserved.
+      </p>
+    </footer>
+  );
+};
 // ===============================================================
 // CASE STUDY FOOTER
 // ===============================================================
@@ -918,18 +939,22 @@ const CaseStudyFooter = () => (
       >← Back to Portfolio</a>
     </div>
     <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", flexWrap:"wrap", gap:12, paddingTop:4, borderTop:"1px solid rgba(255,255,255,0.05)" }}>
-      <div style={{ display:"flex", gap:20, alignItems:"center" }}>
+      <div style={{ display:"flex", gap:12, alignItems:"center" }}>
         {[
-          { label:"GitHub", href:"https://github.com/DRP347" },
-          { label:"LinkedIn", href:"https://www.linkedin.com/in/singh-deepak-wd" },
-          { label:"Dribbble", href:"https://dribbble.com/singh-deepak" },
-          { label:"WhatsApp", href:"https://wa.me/7202809157" },
-        ].map(({ label, href }, i, arr) => (
+          { label:"GitHub", href:"https://github.com/DRP347", icon: "M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.263.82-.582 0-.287-.01-1.05-.015-2.06-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.24 1.84 1.24 1.07 1.837 2.807 1.307 3.492.998.108-.775.418-1.308.76-1.608-2.665-.303-5.467-1.334-5.467-5.934 0-1.31.47-2.382 1.235-3.22-.125-.303-.535-1.523.115-3.176 0 0 1.005-.322 3.3 1.23a11.52 11.52 0 0 1 3.005-.403c1.02.005 2.045.138 3.005.403 2.29-1.552 3.295-1.23 3.295-1.23.655 1.653.245 2.873.12 3.176.77.838 1.235 1.91 1.235 3.22 0 4.61-2.805 5.625-5.475 5.923.43.37.815 1.102.815 2.222 0 1.606-.015 2.896-.015 3.286 0 .32.215.7.825.58C20.565 21.795 24 17.297 24 12c0-6.63-5.37-12-12-12z" },
+          { label:"LinkedIn", href:"https://www.linkedin.com/in/singh-deepak-wd", icon: "M4.98 3.5C4.98 5.43 3.42 7 1.5 7S-2 5.43-2 3.5 0.56 0 2.48 0s2.5 1.57 2.5 3.5zm.02 4.5H0V24h5V8h-.01zM8 8h4.8v2.16h.07c.67-1.27 2.3-2.6 4.74-2.6C23 7.56 24 10.3 24 14.35V24h-5v-9.05c0-2.16-.04-4.94-3.01-4.94-3.01 0-3.47 2.34-3.47 4.78V24H8V8z" },
+          { label:"X", href:"https://x.com/DRajput37654", icon: "M21.8 7.3c-.2.4-.4.7-.7 1l-3 4.8c-.3.5-.6.8-.9 1.1.5.1 1 .3 1.5.5.7.3 1.3.7 1.8 1.2.5.5.9 1.2 1.1 2 .2.8.2 1.7 0 2.6 0 .1-.1.3-.2.5-.1.1-.2.1-.3.2-.5.3-1.1.4-1.7.4-.7 0-1.4-.2-2-.6-.5-.3-.9-.7-1.3-1.1-.4-.4-.7-.8-1-1.4-.3-.5-.5-1-.7-1.5 0 .1-.1.2-.1.2-.2.5-.5 1-.8 1.5-.4.5-.8.9-1.2 1.3-.8.8-1.8 1.4-2.8 1.7-.6.2-1.2.3-1.8.3-.7 0-1.4-.1-2-.3-.6-.2-1.2-.5-1.7-.9-.5-.4-.9-.8-1.2-1.4-.3-.5-.5-1.1-.6-1.7-.1-.7 0-1.4.2-2.1.2-.6.5-1.2.9-1.6.4-.5.9-.9 1.5-1.3.5-.3 1-.5 1.6-.7.6-.2 1.1-.4 1.7-.5l3.6-6.1c.2-.4.3-.9.3-1.4 0-.9-.4-1.7-1.1-2.3-.7-.6-1.6-.9-2.6-.9-.5 0-1 .1-1.5.2-.5.1-1 .3-1.5.5l-4.8 2.2c-.1.1-.2.2-.3.4-.1.2-.1.4-.1.6s.1.4.2.5c.2.3.6.4.9.4h.1c.3 0 .6-.1.8-.3l4.5-2c.2-.1.5-.2.8-.2.3 0 .6.1.8.2.2.1.4.3.5.5s.2.4.2.6c0 .3-.1.6-.3.8l-2.9 4.9c-1.1.2-2.1.5-3.1 1-.8.4-1.5 1-2 1.7-.6.7-1 1.5-1.3 2.4-.2.8-.2 1.7 0 2.6.2.8.6 1.5 1.2 2.1.6.6 1.3 1.1 2.1 1.4.8.3 1.7.5 2.6.5.6 0 1.3-.1 1.9-.3 1-.3 2-.8 2.9-1.5.9-.7 1.6-1.5 2.2-2.4.6-.9 1-1.8 1.2-2.8.1-.4.1-.9 0-1.3-.1-.6-.3-1.1-.5-1.6z" },
+          { label:"Dribbble", href:"https://dribbble.com/singh-deepak", icon: "M12 0C5.373 0 0 5.373 0 12c0 6.627 5.373 12 12 12s12-5.373 12-12C24 5.373 0 0 0 12 0zm5.96 6.178c1.94 1.68 2.73 4.32 2.005 6.84-1.29-.27-3.03-.55-4.87-.28-.2-.55-.42-1.05-.7-1.57 1.88-1.03 3.24-2.49 3.56-4.1zM12 2.4c2.79 0 5.3 1.1 7.12 2.88-.34 1.44-1.56 2.81-3.3 3.78-1.33-2.36-2.88-4.37-3.98-5.43.47-.16.98-.23 1.76-.23zm-3.25.54c1.06 1.14 2.71 3.21 4.08 5.6-1.6.8-3.37 1.12-4.91 1.22-.74-1.82-.79-3.67-.28-5.6zm-2.87.82c-.4 1.7-.34 3.47.3 5.14-2.04.45-3.84.27-4.76.17.58-2.16 2.12-3.97 4.16-5.31zM2.4 12.82c.93.14 2.88.25 5.06-.18.26.48.56.95.86 1.42-2.15.96-4.14 1.29-5.22 1.09-.26-.01-.49-.04-.7-.08.13-.86.36-1.7.69-2.25zm2.87 4.45c1.03-.25 2.93-.82 5.1-1.8.64 1.06 1.32 2 2.09 2.74-2.06.97-4.42 1.13-6.66.45-.17-.3-.31-.63-.53-.94zm7.14 2.27c-1.18-1.41-2.1-3.25-2.79-5.24 2.07-.2 4.35.05 6.43.75-.43 2.06-1.53 3.94-3.64 4.49zM18.44 7.7c.59 1.46.26 3.1-.75 4.37-1.92-.28-3.9-.15-5.6.26-.27-.55-.53-1.1-.81-1.65 1.4-1.47 3.33-2.61 5.16-3.18.48.02.95.04 1.2.2z" },
+          { label:"WhatsApp", href:"https://wa.me/7202809157", icon: "M20.52 3.48A11.87 11.87 0 0 0 12 0C5.373 0 0 5.373 0 12c0 2.12.56 4.1 1.54 5.81L0 24l6.38-1.68A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12 0-3.2-1.24-6.16-3.48-8.52zM12 21.6c-1.84 0-3.63-.5-5.18-1.4l-.37-.22-3.79 1 1-3.7-.24-.38A9.4 9.4 0 0 1 2.4 12c0-5.24 4.26-9.5 9.5-9.5 2.54 0 4.92.99 6.72 2.8a9.45 9.45 0 0 1 2.8 6.72c0 5.24-4.26 9.5-9.5 9.5zm5.2-7.35c-.28-.14-1.64-.8-1.9-.9-.26-.1-.46-.14-.66.14s-.76.9-.94 1.08c-.17.17-.33.19-.61.07-.28-.12-1.2-.44-2.28-1.4-.84-.74-1.4-1.66-1.57-1.94-.17-.28-.02-.43.12-.57.12-.12.28-.31.42-.46.14-.15.19-.26.28-.44.09-.17.05-.33-.02-.46-.07-.12-.66-1.6-.9-2.2-.24-.58-.48-.5-.66-.51-.17-.01-.37-.01-.57-.01-.19 0-.5.07-.77.33-.27.27-1.05 1.02-1.05 2.48 0 1.46 1.08 2.88 1.22 3.08.14.2 2.1 3.2 5.1 4.48.71.31 1.26.5 1.69.64.71.23 1.36.2 1.87.12.57-.08 1.64-.67 1.88-1.31.24-.64.24-1.19.17-1.31-.06-.11-.22-.18-.46-.32z" },
+        ].map(({ label, href, icon }, i, arr) => (
           <React.Fragment key={label}>
-            <a href={href} target="_blank" rel="noopener noreferrer" style={{ fontSize:11, color:"rgba(255,255,255,0.28)", textDecoration:"none", letterSpacing:"0.06em", textTransform:"uppercase", transition:"color 220ms ease" }}
+            <a href={href} target="_blank" rel="noopener noreferrer" style={{ display:"inline-flex", alignItems:"center", gap:6, fontSize:11, color:"rgba(255,255,255,0.28)", textDecoration:"none", letterSpacing:"0.04em", textTransform:"uppercase", transition:"color 220ms ease" }}
               onMouseEnter={e => e.currentTarget.style.color="rgba(255,255,255,0.65)"}
               onMouseLeave={e => e.currentTarget.style.color="rgba(255,255,255,0.28)"}
-            >{label}</a>
+            >
+              <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" style={{ flexShrink:0 }}><path fill="currentColor" d={icon} /></svg>
+              {label}
+            </a>
             {i < arr.length - 1 && <span style={{ color:"rgba(255,255,255,0.10)", fontSize:10 }}>·</span>}
           </React.Fragment>
         ))}
@@ -941,15 +966,86 @@ const CaseStudyFooter = () => (
   </footer>
 );
 
-
 // ===============================================================
 // MAIN APP
 // ===============================================================
+
+const TermsPage = () => (
+  <section className="legal-page">
+    <div className="section-container">
+      <h1>Terms & Conditions</h1>
+      <p>This website is owned and operated by Deepak Singh. By using the site, you agree to these terms, which govern your access to all public pages and interactive features.</p>
+
+      <h2>1. Acceptance of Terms</h2>
+      <p>These terms apply to every visitor, user, or client who interacts with the website. Continued use indicates acceptance of these terms, as well as any updated terms published here.</p>
+
+      <h2>2. Site Use and Access</h2>
+      <p>The content provided on this website is intended for portfolio presentation, design showcase, and informational purposes only. You may view and share content for personal use, but reproduction, redistribution, or commercial use of any site content—including visuals, text, and source code—is prohibited unless expressly authorized.</p>
+
+      <h2>3. Intellectual Property</h2>
+      <p>All design assets, layout structures, interface components, copy, and code are owned or licensed by Deepak Singh unless otherwise noted. Unauthorized use of the website’s intellectual property may violate copyright, trademark, and other laws.</p>
+
+      <h2>4. Accuracy and Updates</h2>
+      <p>Every effort is made to ensure that the information presented on the website is accurate and up to date. However, the website is provided “as is,” and no warranty is made regarding the completeness, accuracy, or availability of content.</p>
+
+      <h2>5. External Links</h2>
+      <p>The website may include links to third-party services, project platforms, or social profiles. These linked sites are not controlled by this website, and inclusion of such links does not imply endorsement. Visitors are responsible for evaluating the privacy and terms of any external services.</p>
+
+      <h2>6. Limitation of Liability</h2>
+      <p>To the fullest extent permitted by applicable law, Deepak Singh is not liable for any direct, indirect, incidental, consequential, or punitive damages arising out of your access to or use of the website.</p>
+
+      <h2>7. Cookies and Data</h2>
+      <p>The website uses cookies and local storage to improve functionality and remember preferences such as theme selection. These technologies do not store personal data unless you voluntarily provide it through project inquiries or contact forms.</p>
+
+      <h2>8. Changes to Terms</h2>
+      <p>These terms may be updated at any time. The current version is posted on this page and takes effect as soon as it is published. Your continued use of the website after updates constitutes acceptance of the revised terms.</p>
+
+      <h2>9. Contact</h2>
+      <p>If you have questions about these terms, please use the contact details provided on the website or reach out through the portfolio’s messaging or booking channels.</p>
+    </div>
+  </section>
+);
+
+const CookiesPage = () => (
+  <section className="legal-page">
+    <div className="section-container">
+      <h1>Cookies Policy</h1>
+      <p>This Cookies Policy explains how cookies and similar technologies are used on this website, including what information is collected, why it is needed, and how to manage your preferences.</p>
+
+      <h2>What Are Cookies?</h2>
+      <p>Cookies are small text files stored on your browser or device that help websites remember preferences, improve functionality, and collect anonymous performance data.</p>
+
+      <h2>How This Site Uses Cookies</h2>
+      <ul>
+        <li><strong>Essential functionality:</strong> to remember your theme preference or site settings so the site behaves consistently between visits.</li>
+        <li><strong>Analytics:</strong> to gather anonymous usage data about how visitors navigate the site so the website can be optimized for performance and usability.</li>
+        <li><strong>Third-party services:</strong> external links, embedded content, or social icons may be supported by third-party cookies managed by those services.</li>
+      </ul>
+
+      <h2>Cookie Consent</h2>
+      <p>When you first visit the website, a cookie consent banner appears. You can choose to accept or decline optional cookies. If you accept, the website records your preference and may use cookies for analytics and improved performance. If you decline, the website will avoid non-essential analytics cookies while still providing core functionality.</p>
+
+      <h2>Local Storage</h2>
+      <p>In addition to cookies, the site uses local storage to remember theme choice and other interface preferences. Local storage stays on your device and is not shared with advertisers.</p>
+
+      <h2>Analytics Services</h2>
+      <p>Vercel Analytics and Speed Insights may run in debug mode during development. In production, anonymous pageview and performance data may be collected only to help improve the website experience.</p>
+
+      <h2>Managing Cookies</h2>
+      <p>You can manage cookies through your browser settings. Disabling cookies may affect some features and visual preferences, but the website remains usable for core portfolio browsing.</p>
+
+      <h2>Data Safety</h2>
+      <p>The website does not sell personal data or serve targeted advertising. Cookies are used only for functional and anonymous performance purposes.</p>
+    </div>
+  </section>
+);
 
 const App = () => {
   const [theme, setTheme] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [cookieConsent, setCookieConsent] = useState(null);
+  const [showCookieBanner, setShowCookieBanner] = useState(false);
 
   useEffect(() => {
     const hour = new Date().getHours();
@@ -967,6 +1063,27 @@ const App = () => {
     const timer = setTimeout(() => setIsLoaded(true), 120);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    const stored = window.localStorage.getItem("cookieConsent");
+    if (stored === "accepted" || stored === "declined") {
+      setCookieConsent(stored);
+    } else {
+      setShowCookieBanner(true);
+    }
+  }, []);
+
+  const acceptCookies = () => {
+    window.localStorage.setItem("cookieConsent", "accepted");
+    setCookieConsent("accepted");
+    setShowCookieBanner(false);
+  };
+
+  const declineCookies = () => {
+    window.localStorage.setItem("cookieConsent", "declined");
+    setCookieConsent("declined");
+    setShowCookieBanner(false);
+  };
 
   const navLinks = [
     { href: "#home", title: "Home" },
@@ -1041,6 +1158,42 @@ const App = () => {
     </>
   }
 />
+<Route
+  path="/terms"
+  element={
+    <>
+      <Navbar
+        navLinks={navLinks}
+        theme={theme}
+        toggleTheme={toggleTheme}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+      />
+      <main>
+        <TermsPage />
+      </main>
+      <Footer navLinks={navLinks} />
+    </>
+  }
+/>
+<Route
+  path="/cookies"
+  element={
+    <>
+      <Navbar
+        navLinks={navLinks}
+        theme={theme}
+        toggleTheme={toggleTheme}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+      />
+      <main>
+        <CookiesPage />
+      </main>
+      <Footer navLinks={navLinks} />
+    </>
+  }
+/>
 <Route path="/case-study/the-garment-guy" element={<><main><CaseStudyGarmentGuy /></main><CaseStudyFooter /></>} />
 Place holders for future case studies:
         {/* 404 */}
@@ -1057,6 +1210,17 @@ Place holders for future case studies:
           }
         />
       </Routes>
+      {showCookieBanner && (
+        <div className="cookie-banner">
+          <div className="cookie-banner-copy">
+            <p><strong>Cookie consent:</strong> We use cookies for essential site functionality, theme preference, and anonymous analytics. Accepting cookies helps us improve performance while keeping your data anonymous.</p>
+          </div>
+          <div className="cookie-banner-actions">
+            <button className="cookie-button accept" onClick={acceptCookies}>Accept cookies</button>
+            <button className="cookie-button decline" onClick={declineCookies}>Decline cookies</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

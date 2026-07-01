@@ -46,18 +46,6 @@ const projectsData = [
   },
   {
     id: 4,
-    title: "Finova Dashboard",
-    category: "Design",
-    description: "Real-time financial analytics platform.",
-    outcome: "60% faster data insights",
-    tech: ["React", "D3.js", "TypeScript"],
-    image: "img/finova-thumb.webp",
-    link: "#",
-    alt: "Finova Dashboard",
-    color: "#065f46", // emerald
-  },
-  {
-    id: 5,
     title: "The Garment Guy",
     category: "Development",
     description: "Premium e-commerce platform with immersive product experiences.",
@@ -67,18 +55,6 @@ const projectsData = [
     link: "/case-study/pulse-studio",
     alt: "The Garment Guy Website",
     color: "#78350f", // amber
-  },
-  {
-    id: 6,
-    title: "Stride Health",
-    category: "Design",
-    description: "Fitness tracking app with gamification.",
-    outcome: "4.8★ App Store rating",
-    tech: ["React Native", "HealthKit"],
-    image: "img/stride-thumb.webp",
-    link: "#",
-    alt: "Stride Health App",
-    color: "#0f172a", // slate dark
   },
 ];
 
