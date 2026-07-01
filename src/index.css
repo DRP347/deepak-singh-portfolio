@@ -672,6 +672,12 @@ html[data-theme="dark"] .hero-subtitle {
 html[data-theme="dark"] .hero-title-gradient {
   /* Slightly brighter gradient on dark background */
   background: linear-gradient(135deg, #5ea3ff, #b68bff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+  line-height: 1;
 }
 
 .hero-content {
@@ -687,7 +693,11 @@ html[data-theme="dark"] .hero-title-gradient {
 .hero-title-gradient {
   background: linear-gradient(135deg, var(--accent1), var(--accent2));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+  line-height: 1;
 }
 
 .hero-subtitle {
