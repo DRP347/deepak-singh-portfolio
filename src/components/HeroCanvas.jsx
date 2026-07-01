@@ -44,8 +44,11 @@ function VrThinkerModel({ isMobile }) {
 
 const HeroSceneContent = ({ theme, isMobile }) => (
   <>
-    <ambientLight intensity={theme === "light" ? 1.0 : 0.6} />
-    <directionalLight position={[10, 10, 5]} intensity={theme === "light" ? 1.5 : 1.2} />
+    {/* Keep the model visible in dark mode by slightly boosting scene lighting
+        and adding a hemisphere light for soft sky/ground fill. */}
+    <ambientLight intensity={theme === "light" ? 1.0 : 1.1} />
+    <directionalLight position={[10, 10, 5]} intensity={theme === "light" ? 1.5 : 1.6} />
+    <hemisphereLight skyColor={'#ffffff'} groundColor={'#222233'} intensity={0.45} />
     <VrThinkerModel isMobile={isMobile} />
   </>
 );
