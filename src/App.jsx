@@ -265,20 +265,30 @@ function VrThinkerModel() {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const opacityRef = useRef(0);
 
+  const meshList = useMemo(() => {
+    const list = [];
+    clonedScene.traverse((child) => {
+      if (child.isMesh && child.material) {
+        child.material.transparent = true;
+        child.material.opacity = 0;
+        list.push(child);
+      }
+    });
+    return list;
+  }, [clonedScene]);
+
   useFrame((_, delta) => {
     if (!modelRef.current) return;
 
     opacityRef.current = Math.min(opacityRef.current + delta * 0.8, 1);
 
-    clonedScene.traverse((child) => {
-      if (child.isMesh && child.material) {
-        child.material.transparent = true;
-        child.material.opacity = opacityRef.current;
-      }
-    });
+    for (const mesh of meshList) {
+      mesh.material.opacity = opacityRef.current;
+    }
 
-    const breathe = Math.sin(Date.now() * 0.0008) * 0.005 + 1;
-    const floatY = Math.sin(Date.now() * 0.0005) * 0.05;
+    const time = performance.now();
+    const breathe = Math.sin(time * 0.0008) * 0.005 + 1;
+    const floatY = Math.sin(time * 0.0005) * 0.05;
 
     const scale = isMobile ? 0.0 : 0.125;
     const posX = isMobile ? 0 : 3.15;
@@ -321,8 +331,10 @@ const HeroSection = ({ theme }) => {
         <div className="hero-canvas-container">
           <Canvas
             camera={{ fov: 45 }}
-            gl={{ antialias: true, alpha: true }}
-            dpr={[1, 1.25]}
+            gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+            dpr={[1, 1]}
+            performance={{ min: 0.5, max: 0.75, debounce: 100 }}
+            shadows={false}
           >
             <Suspense fallback={null}>
               <HeroSceneContent theme={theme} />
@@ -1211,13 +1223,13 @@ Place holders for future case studies:
         />
       </Routes>
       {showCookieBanner && (
-        <div className="cookie-banner">
+        <div className="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent banner">
           <div className="cookie-banner-copy">
-            <p><strong>Cookie consent:</strong> We use cookies for essential site functionality, theme preference, and anonymous analytics. Accepting cookies helps us improve performance while keeping your data anonymous.</p>
+            <p><strong>We use cookies</strong> to remember your theme, keep the site running smoothly, and collect anonymous performance data. You can accept or decline below.</p>
           </div>
           <div className="cookie-banner-actions">
-            <button className="cookie-button accept" onClick={acceptCookies}>Accept cookies</button>
-            <button className="cookie-button decline" onClick={declineCookies}>Decline cookies</button>
+            <button className="cookie-button accept" onClick={acceptCookies}>Accept</button>
+            <button className="cookie-button decline" onClick={declineCookies}>Decline</button>
           </div>
         </div>
       )}
