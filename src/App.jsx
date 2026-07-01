@@ -7,14 +7,8 @@ import React, {
   useRef,
   Suspense,
   useMemo,
+  lazy,
 } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import {
-  useGLTF,
-  Environment,
-  Preload,
-  OrbitControls,
-} from "@react-three/drei";
 import {
   motion,
   AnimatePresence,
@@ -24,14 +18,16 @@ import {
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Routes, Route } from "react-router-dom";
-import WorkPage from "./pages/WorkPage";
-import CaseStudyArabianRedFox from "./case-studies/ArabianRedFox";
-import CaseStudyGarmentGuy from "./case-studies/TheGarmentGuy";
-import CaseStudyPortfolio from "./case-studies/PortfolioCaseStudy";
-import CaseStudyKumoKitchen from "./case-studies/KumoKitchen";
-import CaseStudyPulseStudio from "./case-studies/PulseStudio";
 import "./index.css";
 import Navbar from "./components/Navbar";
+
+const HeroCanvas = lazy(() => import("./components/HeroCanvas"));
+const WorkPage = lazy(() => import("./pages/WorkPage"));
+const CaseStudyArabianRedFox = lazy(() => import("./case-studies/ArabianRedFox"));
+const CaseStudyGarmentGuy = lazy(() => import("./case-studies/TheGarmentGuy"));
+const CaseStudyPortfolio = lazy(() => import("./case-studies/PortfolioCaseStudy"));
+const CaseStudyKumoKitchen = lazy(() => import("./case-studies/KumoKitchen"));
+const CaseStudyPulseStudio = lazy(() => import("./case-studies/PulseStudio"));
 
 
 // ===============================================================
@@ -314,14 +310,18 @@ const HeroSceneContent = ({ theme }) => (
   </>
 );
 
-useGLTF.preload("/vr_thinker.glb");
-
 // ===============================================================
 // HERO SECTION — ORIGINAL STRUCTURE + IMPROVEMENTS
 // ===============================================================
 
 const HeroSection = ({ theme }) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
+  const [showHero, setShowHero] = useState(false);
+
+  useEffect(() => {
+    const timer = window.requestAnimationFrame(() => setShowHero(true));
+    return () => window.cancelAnimationFrame(timer);
+  }, []);
 
   return (
     <section id="home" className="hero-section">
@@ -329,26 +329,14 @@ const HeroSection = ({ theme }) => {
 
       {!isMobile && (
         <div className="hero-canvas-container">
-          <Canvas
-            camera={{ fov: 45 }}
-            gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-            dpr={[1, 1]}
-            performance={{ min: 0.5, max: 0.75, debounce: 100 }}
-            shadows={false}
-          >
+          <div className="hero-canvas-fallback" aria-hidden="true">
+            <div className="hero-canvas-fallback-gradient" />
+          </div>
+          {showHero && (
             <Suspense fallback={null}>
-              <HeroSceneContent theme={theme} />
-              <Preload all />
+              <HeroCanvas theme={theme} isMobile={isMobile} />
             </Suspense>
-
-            <OrbitControls
-              enableDamping
-              dampingFactor={0.05}
-              enableZoom={false}
-              maxPolarAngle={Math.PI / 2}
-              minPolarAngle={Math.PI / 3}
-            />
-          </Canvas>
+          )}
         </div>
       )}
 
